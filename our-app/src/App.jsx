@@ -1,7 +1,12 @@
-import './App.css';
+import { Outlet, Link } from 'react-router-dom';
 
 function App() {
-  return <div className="App">hello world</div>;
+  return (
+    <div>
+      <Link to="/activities-list">Find Activities</Link>
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;

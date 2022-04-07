@@ -1,15 +1,12 @@
 import { render } from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
-import ActivitiesList from './routes/activities-list';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const rootElement = document.getElementById('root');
 render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="activities-list" element={<ActivitiesList />} />
-    </Routes>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   rootElement
 );

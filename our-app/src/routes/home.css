@@ -1,0 +1,9 @@
+.home {
+  display: flex;
+  justify-content: center;
+  margin-top: 25vh;
+}
+
+.home > * {
+  margin-right: 2em;
+}

@@ -16,7 +16,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 4em;
+  padding: 1em 2em;
+}
+
+.score {
+  font-size: 1.5rem;
 }
 
 .act-list-title {
@@ -24,6 +28,7 @@ header {
   flex-flow: wrap column;
   align-items: center;
   justify-content: center;
+  margin-top: 2em;
 }
 
 .selected {
@@ -42,13 +47,13 @@ header {
 }
 
 .act-list {
-  width: 30%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 3em auto;
 }
 
 .labels {
   text-transform: uppercase;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,22 +65,63 @@ header {
 .pts-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 15%;
+  justify-content: end;
+  width: 40%;
+}
+
+.help-button {
+  width: 20px;
+  height: 20px;
+  margin-right: 1em;
+}
+
+.back-button {
+  width: 3em;
+  height: 3em;
+}
+
+.icon-report {
+  width: 3em;
+  height: 3em;
 }
 
 .act {
   background-color: var(--clr-accent);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
   text-transform: capitalize;
-}
-
-.act a {
   text-decoration: none;
   color: black;
   font-weight: var(--fw-bold);
+}
+
+.act-name {
+  max-width: 70%;
+}
+
+.act-list-title p {
+  text-align: center;
+}
+
+@media (min-width: 40em) {
+  body {
+    font-size: 1.5rem;
+  }
+  header {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  .score {
+    font-size: 2rem;
+  }
+  .act-list {
+    max-width: 40rem;
+  }
+  .labels {
+    font-size: 1rem;
+  }
 }

@@ -14,13 +14,11 @@ function ActivitiesList() {
     <div>
       <main>
         <header>
-          <div className="back-button">
-            <Back />
-          </div>
+          <Link to="/">
+            <Back className="back-button" />
+          </Link>
           <div className="score">Score: 0</div>
-          <div className="icon-report">
-            <Report />
-          </div>
+          <Report className="icon-report" />
         </header>
         <section className="act-list-title">
           <h1 className="selected">Selected: 20 min, Mental</h1>
@@ -30,18 +28,20 @@ function ActivitiesList() {
           <div className="labels">
             <p>activity</p>
             <p className="pts-wrapper">
-              <Help />
-              <p>points</p>
+              <Help className="help-button" />
+              <span>points</span>
             </p>
           </div>
           <div className="acts">
             {acts.map((acts) => (
-              <div className="act">
-                <Link to={`/activities-list/${acts.number}`} key={acts.number}>
-                  {acts.name}
-                </Link>
+              <Link
+                to={`/activities-list/${acts.number}`}
+                key={acts.number}
+                className="act"
+              >
+                <p className="act-name">{acts.name}</p>
                 <p className="pts">{acts.points}</p>
-              </div>
+              </Link>
             ))}
             {/* <div className="act-1">
               <p className="act">a</p>

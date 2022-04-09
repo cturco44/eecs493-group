@@ -11,6 +11,11 @@ function Home({ selectCategory }) {
       <button onClick={() => selectCategory('social')}>Social</button>
       <button onClick={() => selectCategory('mental')}>Mental</button>
       <Link to="/activities-list">find activities</Link>
+
+
+      <Link to="/help-start">start help</Link>
+      <Link to="/help-activities-list">activities help</Link>
+      <Link to="/in-progress">in progress</Link>
     </div>
   );
 }

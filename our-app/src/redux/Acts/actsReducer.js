@@ -1,8 +1,10 @@
 import * as actionTypes from './actsTypes';
 
 const INITIAL_STATE = {
-  category: '',
+  category: 'mental',
   time: 10,
+  score: 0,
+  completed: [],
 };
 
 const actsReducer = (state = INITIAL_STATE, action) => {

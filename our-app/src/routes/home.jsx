@@ -10,7 +10,7 @@ function Home({ selectCategory }) {
     <div className="home">
       <button onClick={() => selectCategory('social')}>Social</button>
       <button onClick={() => selectCategory('mental')}>Mental</button>
-      <Link to="/activities-list">find activities</Link>
+      {/* <Link to="/activities-list">find activities</Link> */}
 
 
       <Link to="/help-start">start help</Link>

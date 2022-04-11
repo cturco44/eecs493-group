@@ -3,6 +3,7 @@ import { getActs } from '../data';
 import { ReactComponent as Report } from './../images/icon-report.svg';
 import { ReactComponent as Back } from './../images/back-arrow-to-first-track-svgrepo-com 1.svg';
 // import { ReactComponent as Help } from './../images/help-button.svg';
+import {Stopwatch} from './../Components/Stopwatch'
 import { connect } from 'react-redux';
 import './in-progress.css';
 
@@ -19,15 +20,19 @@ const InProgress = (/*{ category, time }*/) => {
           <Report className="icon-report" />
         </header>
         <section className="in-progress">
-            <h1>{ActivityName}</h1>
+            <h1 className='selected'>{ActivityName}</h1>
             <p>In Progress</p>
             <div className='horiz-line'/>
+
+            {/* popup? */}
             <button onClick={() => console.log('"activity description" button pressed!')}>Activity Description</button>
             <div className='line-break'/>
             <div>
                 <p>Time Elapsed</p>
-                <div className='Stopwatch'>{'<Stopwatch time here'}</div>
+                {/* <div className="Stopwatch"/> */}
             </div>
+
+            {/* change page + record activity */}
             <button onClick={() => console.log('"end activity" button pressed!')}>End Activity</button>
         </section>
       </main>

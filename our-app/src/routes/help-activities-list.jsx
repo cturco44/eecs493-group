@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { getActs } from '../data';
-import { ReactComponent as Report } from './../images/icon-report.svg';
-import { ReactComponent as Back } from './../images/back-arrow-to-first-track-svgrepo-com 1.svg';
+// import { Link } from 'react-router-dom';
+// import { getActs } from '../data';
+// import { ReactComponent as Report } from './../images/icon-report.svg';
+// import { ReactComponent as Back } from './../images/back-arrow-to-first-track-svgrepo-com 1.svg';
 // import { ReactComponent as Help } from './../images/help-button.svg';
 import { connect } from 'react-redux';
 import './help-activities-list.css';
@@ -9,30 +9,35 @@ import './help-activities-list.css';
 const HelpActivitiesList = (/*{ category, time }*/) => {
   return (
     <div>
-      <main>
-        <header>
-          <Link to="/"> {/* TODO: change */}
-            <Back className="back-button" />
-          </Link>
-          <div className="score">Score: 0</div>
-          <Report className="icon-report" />
-        </header>
-        <section className="help-activities-list">
-          <h1>Help</h1>
-          <div className='horiz-line'/>
-          <div>
-            <h2 className='bold'>Points</h2>
-            <p>
-              This is the body of an explanation about the points system.
-            </p>
+      <main className="popup">
+        <div className="help-popup">
+          <div className="help-header">
+            HELP
           </div>
-          <div>
-            <h2 className='bold'>Points vs Time</h2>
-            <p>
-              This is the body of an explanation about the points system as a user accumulates events in the report.
+          {/* <div className="horiz-line"></div> */}
+          <section className="help-question-answer">
+            <div className="help-question">What is APP_NAME?</div>
+            <p>APP_NAME is a program aimed at getting people outside. That’s it.
+              It gives its users complete flexibility of choice in time and
+              location, then suggests a couple of fun activities to do outside,
+              from taking a walk with a friend to a outdoor photography
+              scavenger hunt.
             </p>
-          </div>
-        </section>
+          </section>
+          <section className="help-question-answer">
+            <div className="help-question">About scores/points?</div>
+            <p>As you complete activites, you can earn points that count towards
+              your “score”. You can see your score in the upper right corner of
+                the activity selection screen.</p>
+            <p>Different activities may reward different amounts of points.
+              Additionally, as you complete activites, the amount of points
+              awarded by activities that you do not tend to select may increase,
+              giving you an opportunity to try something different for more
+              rewards.
+            </p>
+          </section>
+        </div>
+
       </main>
     </div>
   );

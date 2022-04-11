@@ -1,0 +1,67 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.bg {
+ background-image: url("kate.jpg");
+
+ /* Full height */
+ height: 100%;
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+ text-align: center;
+}
+
+.header {
+
+  font-weight: 700;
+  font-size: 100px;
+  text-align: center;
+  transform: translate(0, 50%);
+
+  color: #FFFFFF;
+}
+
+@media only screen and (max-width: 1080px) {
+  .header {
+    font-size: 70px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .header {
+    font-size: 60px;
+  }
+}
+
+input[type=fname] {
+  width: 45%;
+  transform: translate(0, 100%);
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+
+  background: rgba(196, 196, 196, 0.7);
+  font-size: 30px;
+  text-align: center;
+}
+
+input[type=fname]:focus {
+  border: 3px solid #555;
+}
+
+.StartButt {
+  transform: translate(0, 150%);
+  background-color: #7ab576;
+
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

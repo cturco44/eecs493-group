@@ -3,11 +3,11 @@ import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
 import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
-import './in-progress.css';
 import { getActInfo } from '../activity-description/data';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { React, useState } from 'react'
+import styles from './InProgress.module.css';
 
 
 const InProgress = () => {

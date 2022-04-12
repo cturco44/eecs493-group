@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getActInfo } from './data';
+import { getActs } from './data';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
 // import { ReactComponent as Home } from './../../images/home-button.svg';
@@ -8,9 +8,8 @@ import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
 
 const ActivityDescription = ({actName}) => {
-    // let allActs = getActs();
-    // let activity = allActs.filter((allActs) => allActs.name === actName);
-    let activity = []
+    let allActs = getActs();
+    let activity = allActs.filter((allActs) => allActs.name === actName);
     return (
       <div>
         <main>

@@ -1,18 +1,18 @@
 // import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
-import './help-activities-list.css';
+import styles from './HelpActivitiesList.module.css';
 
 const HelpActivitiesList = () => {
   return (
     <div>
-      <main className="popup">
-        <div className="help-popup">
-          <div className="help-header">
+      <main className={styles.popup}>
+        <div className={styles['help-popup']}>
+          <div className={styles['help-header']}>
             HELP
           </div>
           {/* <div className="horiz-line"></div> */}
-          <section className="help-question-answer">
-            <div className="help-question">What is APP_NAME?</div>
+          <section className={styles['help-question-answer']}>
+            <div className={styles['help-question']}>What is APP_NAME?</div>
             <p>APP_NAME is a program aimed at getting people outside. That’s it.
               It gives its users complete flexibility of choice in time and
               location, then suggests a couple of fun activities to do outside,
@@ -20,8 +20,8 @@ const HelpActivitiesList = () => {
               scavenger hunt.
             </p>
           </section>
-          <section className="help-question-answer">
-            <div className="help-question">About scores/points?</div>
+          <section className={styles['help-question-answer']}>
+            <div className={styles['help-question']}>About scores/points?</div>
             <p>As you complete activites, you can earn points that count towards
               your “score”. You can see your score in the upper right corner of
                 the activity selection screen.</p>

@@ -3,7 +3,7 @@ import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
 import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
-import './in-progress.css';
+import styles from './InProgress.module.css';
 
 const InProgress = (/*{ category, time }*/) => {
     let ActivityName = "<ACTIVITY NAME HERE>";
@@ -15,19 +15,19 @@ const InProgress = (/*{ category, time }*/) => {
 
         <header>
           <Link to="/"> {/* TODO: change */}
-            <Back className="back-button" />
+            <Back className={styles['back-button']} />
           </Link>
-          <div className="score">Score: 0</div>
-          <Report className="icon-report" />
+          <div className={styles.score}>Score: 0</div>
+          <Report className={styles['icon-report']} />
         </header>
-        <section className="in-progress">
-            <h1 className='selected'>{ActivityName}</h1>
+        <section className={styles['in-progress']}>
+            <h1 className={styles.selected}>{ActivityName}</h1>
             <p>In Progress</p>
-            <div className='horiz-line'/>
+            <div className={styles['horiz-line']}/>
 
             {/* popup? */}
             <button onClick={() => console.log('"activity description" button pressed!')}>Activity Description</button>
-            <div className='line-break'/>
+            <div className={styles['line-break']}/>
             <div>
                 <p>Time Elapsed</p>
                 {/* <div className="Stopwatch"/> */}

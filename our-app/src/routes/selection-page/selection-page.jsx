@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { React, useState } from 'react';
-import './selection_page.css';
+import styles from './SelectionPage.module.css';
 
 import { connect } from 'react-redux';
 import { selectCategory, selectTime } from '../../redux/Acts/actsActions';
@@ -14,22 +14,26 @@ function ActivityButton(props) {
   );
 }
 
-const SelectionPage = ({ selectCategory, selectTime }) => {
-  const [time, setTime] = useState('enter your time');
+const SelectionPage = ({ selectCategory }) => {
+  const [time, setTime] = useState("");
   return (
-    <div>
-      <div className="topBuff"></div>
+      <div>
+        <div className={styles.topBuff}></div>
 
-      <input type="button" className="report" />
+        <input type="button" className={styles.report} />
 
-      <div className="header">
-        <p> Hi, name! </p>
-      </div>
+        <div className = {styles.header}>
+          <p> Hi, name! </p>
+        </div>
 
-      <div className="minQ">
-        <p> First, how many minutes want to be outside for? </p>
-      </div>
+        <div className = {styles.minQ}>
+          <p> First, how many minutes want to be outside for? </p>
+        </div>
 
+        <form>
+          {/* TODO: add to state */}
+          <input type="text" value={time} placeholder="enter your time" onChange={e => setTime(e.target.value)}/>
+        </form>
       <form>
         {/* TODO: add to state */}
         <input
@@ -44,21 +48,26 @@ const SelectionPage = ({ selectCategory, selectTime }) => {
         <p> Now, select categories you are interested in: </p>
       </div>
 
-      <div className="actionButts">
-        <div className="button_w_text">
-          <button onClick={() => selectCategory('social')}>Social</button>
-          <span className="Caption">Social</span>
+        <div className= {styles.categoryQ}>
+          <p> Now, select categories you are interested in: </p>
         </div>
 
-        <div className="button_w_text">
-          <button onClick={() => selectCategory('exercise')}>Exercise</button>
-          <span className="Caption">Exercise</span>
-        </div>
+        <div className={styles.actionButts}>
 
-        <div className="button_w_text">
-          <button onClick={() => selectCategory('mental')}>Mental</button>
-          <span className="Caption">Mental</span>
-        </div>
+          <div className={styles.button_w_text}>
+            <button onClick={() => selectCategory('social')}>Social</button>
+            <span className={styles.Caption}>Social</span>
+          </div>
+
+          <div className={styles.button_w_text}>
+            <button onClick={() => selectCategory('exercise')}>Exercise</button>
+            <span className={styles.Caption}>Exercise</span>
+          </div>
+
+          <div className={styles.button_w_text}>
+            <button onClick={() => selectCategory('mental')}>Mental</button>
+            <span className={styles.Caption}>Mental</span>
+          </div>
 
         {/* <ActivityButton ActivityButt="Social" className = 'Social' />
 

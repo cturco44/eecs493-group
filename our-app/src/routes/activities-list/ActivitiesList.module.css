@@ -98,7 +98,6 @@ header {
   width: 100%;
   padding: 1em;
   margin-bottom: 3em;
-  text-transform: capitalize;
   text-decoration: none;
   color: black;
   font-weight: var(--fw-bold);

@@ -47,10 +47,6 @@ const ActivitiesList = ({ category, time, score }) => {
                 <p className={styles.pts}>{acts.points}</p>
               </Link>
             ))}
-
-            <div> {/* TODO: DELETE; DO NOT MERGE */}
-              <Link to={'../in-progress/in-progress'}> SHORTCUT TO IN-PROGRESS </Link>
-            </div>
             {/* <div className="act-1">
               <p className="act">a</p>
               <p className="pts">1</p>

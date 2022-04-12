@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { getActs } from '../activities-list/data';
+import { getActs } from './data';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
-import { ReactComponent as Home } from './../../images/home-button.svg';
+// import { ReactComponent as Home } from './../../images/home-button.svg';
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import './activity-description.css';
@@ -13,7 +13,17 @@ const ActivityDescription = ({actName}) => {
     return (
       <div>
         <main>
+          <div class="header d-flex flex-row justify-content-between align-items-center">
+            <img src="images/back.svg" alt="back icon"/>
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                <img src="images/report.svg" class="me-3 icon" alt="report icon"/>
+                {/* <img src="images/home.svg" class="me-3 icon" alt="home icon"/> */}
+                <img src="images/question-mark.svg" class="me-3 icon" alt="question icon"/>
+            </div>
+          </div>
+
             <div className="header">
+
                 <div className="headerIcon">
                     <Link to="/"> {/* TODO: change */}
                         <Back className="back-button" />
@@ -22,7 +32,7 @@ const ActivityDescription = ({actName}) => {
                         <Report className="report-button" />
                     </Link>
                     <Link to="/"> {/* TODO: change */}
-                        <Home className="home-button" />
+                        {/* <Home className="home-button" /> */}
                     </Link>
                     <Link to="/"> {/* TODO: change */}
                         <Help className="help-button" />

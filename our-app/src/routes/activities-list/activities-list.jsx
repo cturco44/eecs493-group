@@ -39,7 +39,7 @@ const ActivitiesList = ({ category, time, score }) => {
           <div className={styles.acts}>
             {acts.map((acts) => (
               <Link
-                to={'../activity-description/activity-description'}
+                to={`../activity-description/activity-description/${acts.number}`}
                 key={acts.number}
                 className="act"
               >

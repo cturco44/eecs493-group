@@ -7,10 +7,11 @@ import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
 
-const ActivityDescription = ({actName}) => {
+const ActivityDescription = ({actID}) => {
     // let allActs = getActs();
     // let activity = allActs.filter((allActs) => allActs.name === actName);
-    let activity = []
+    let allActs = getActInfo();
+    let activity = allActs[actID];
     return (
       <div>
         <main>
@@ -73,7 +74,7 @@ const ActivityDescription = ({actName}) => {
 
 const mapStateToProps = (state) => {
   return {
-    name: state.activity.name,
+    name: state.acts.name,
   };
 };
 

@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   preActNote: 'pre',
   postActRate: 5,
   postActNote: 'post',
+  name: 'john',
   completed: [
     {
       id: 1,
@@ -37,7 +38,7 @@ const INITIAL_STATE = {
       postActNote: 'bye',
     },
   ], // {id, duration, ptsEarned, preActRate, preActNote, postActRate, postActNote}
-  name: 'john',
+  
 };
 
 const actsReducer = (state = INITIAL_STATE, action) => {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
-// import {Stopwatch} from './../Components/Stopwatch'
+import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
 import './in-progress.css';
 

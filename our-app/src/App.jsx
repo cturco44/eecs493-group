@@ -17,10 +17,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/selection-page/selection-page" element={<SelectionPage />} />
-          <Route path="/activities-list/activities-list" element={<ActivitiesList />} />
-          <Route path="/activities-list/activities-list" element={<Activit />} />
-          <Route path="/help-activities-list/help-activities-list" element={<HelpActivitiesList />} />
+          <Route
+            path="/selection-page/selection-page"
+            element={<SelectionPage />}
+          />
+          <Route
+            path="/activities-list/activities-list"
+            element={<ActivitiesList />}
+          />
+          <Route
+            path="/help-activities-list/help-activities-list"
+            element={<HelpActivitiesList />}
+          />
           <Route path="/help-start/help-start" element={<HelpStart />} />
           <Route path="/in-progress/in-progress" element={<InProgress />} />
 

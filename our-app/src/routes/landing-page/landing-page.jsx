@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { React, useState } from 'react';
-import './landing_page.css';
+import styles from './LandingPage.module.css';
 
 
 const LandingPage = () => {
-  const [name, setName] = useState("Enter your name");
+  const [name, setName] = useState("");
 
   return (
     <div>
-      <div className = "bg">
+      <div className = {styles.bg}>
 
-      <div className="header" id="Welcome">
+      <div className={styles.header} id="Welcome">
         <h1> WELCOME </h1>
       </div>
 
@@ -19,7 +19,7 @@ const LandingPage = () => {
       </form>
 
       <Link to="../selection-page/selection-page">
-        <input type="button" className="StartButt" value="Start Session" />
+        <input type="button" className={styles.StartButt} value="Start Session" />
 
       </Link>
       </div>

@@ -5,7 +5,7 @@ import { ReactComponent as Back } from './../../images/back-arrow-to-first-track
 // import { ReactComponent as Home } from './../../images/home-button.svg';
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
-import './activity-description.css';
+import styles from './ActivityDescription.module.css';
 
 const ActivityDescription = ({actName}) => {
     let allActs = getActs();
@@ -22,9 +22,9 @@ const ActivityDescription = ({actName}) => {
             </div>
           </div>
 
-            <div className="header">
+            <div className={styles.header}>
 
-                <div className="headerIcon">
+                <div className={styles.headerIcon}>
                     <Link to="/"> {/* TODO: change */}
                         <Back className="back-button" />
                     </Link>
@@ -35,34 +35,34 @@ const ActivityDescription = ({actName}) => {
                         {/* <Home className="home-button" /> */}
                     </Link>
                     <Link to="/"> {/* TODO: change */}
-                        <Help className="help-button" />
+                        <Help className={styles['help-button']} />
                     </Link>
                 </div>
             </div>
 
-          <section className="activityName">
+          <section className={styles.activityName}>
             <h1> {activity.name} </h1>
-            <hr className="lineBreak"/>
+            <hr className={styles.lineBreak}/>
           </section>
 
-          <section className="InfoContainer">
-            <div className="description">
+          <section className={styles.InfoContainer}>
+            <div className={styles.description}>
                 <h2>Description:</h2>
                 <p> {activity.description} </p>
             </div>
 
-            <div className="instructions">
+            <div className={styles.instructions}>
                 <h2>Instructions:</h2>
                 <p> {activity.instructions} </p>
             </div>
 
-            <div className="tips">
+            <div className={styles.tips}>
                 <h2>Tips:</h2>
                 <p> {activity.tips} </p>
             </div>
         </section>
 
-        <section className="nextButton">
+        <section className={styles.nextButton}>
             <button onClick={() => console.log('"next" button pressed!')}>Next</button>
         </section>
         </main>

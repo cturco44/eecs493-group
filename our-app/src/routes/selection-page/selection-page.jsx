@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { React, useState } from 'react';
-import './selection_page.css';
+import styles from './SelectionPage.module.css';
 
 import { connect } from 'react-redux';
 import { selectCategory } from '../../redux/Acts/actsActions';
@@ -12,46 +12,46 @@ function ActivityButton(props) {
 }
 
 const SelectionPage = ({ selectCategory }) => {
-  const [time, setName] = useState("enter your time");
+  const [time, setName] = useState("");
   return (
       <div>
-        <div className="topBuff"></div>
+        <div className={styles.topBuff}></div>
 
-        <input type="button" className="report" />
+        <input type="button" className={styles.report} />
 
-        <div className = "header">
+        <div className = {styles.header}>
           <p> Hi, name! </p>
         </div>
 
-        <div className = "minQ">
+        <div className = {styles.minQ}>
           <p> First, how many minutes want to be outside for? </p>
         </div>
 
         <form>
           {/* TODO: add to state */}
-          <input type="text" value={time} placeholder="time" onChange={e => setName(e.target.value)}/>
+          <input type="text" value={time} placeholder="enter your time" onChange={e => setName(e.target.value)}/>
 
         </form>
 
-        <div className= "categoryQ">
+        <div className= {styles.categoryQ}>
           <p> Now, select categories you are interested in: </p>
         </div>
 
-        <div className="actionButts">
+        <div className={styles.actionButts}>
 
-          <div className='button_w_text'>
+          <div className={styles.button_w_text}>
             <button onClick={() => selectCategory('social')}>Social</button>
-            <span className='Caption'>Social</span>
+            <span className={styles.Caption}>Social</span>
           </div>
 
-          <div className='button_w_text'>
+          <div className={styles.button_w_text}>
             <button onClick={() => selectCategory('exercise')}>Exercise</button>
-            <span className='Caption'>Exercise</span>
+            <span className={styles.Caption}>Exercise</span>
           </div>
 
-          <div className='button_w_text'>
+          <div className={styles.button_w_text}>
             <button onClick={() => selectCategory('mental')}>Mental</button>
-            <span className='Caption'>Mental</span>
+            <span className={styles.Caption}>Mental</span>
           </div>
 
           {/* <ActivityButton ActivityButt="Social" className = 'Social' />
@@ -62,7 +62,7 @@ const SelectionPage = ({ selectCategory }) => {
         </div>
         <Link to="../activities-list/activities-list">find activities</Link>
 
-        <div className="bottBuff"></div>
+        <div className={styles.bottBuff}></div>
       </div>
 
   );

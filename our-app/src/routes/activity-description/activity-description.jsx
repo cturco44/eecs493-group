@@ -6,12 +6,15 @@ import { ReactComponent as Back } from './../../images/back-arrow-to-first-track
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
+import {useParams} from 'react-router-dom'
 
 const ActivityDescription = ({actID}) => {
     // let allActs = getActs();
     // let activity = allActs.filter((allActs) => allActs.name === actName);
+    let params = useParams();
     let allActs = getActInfo();
-    let activity = allActs[actID];
+    let activityId = parseInt(params.actId, 10)
+    let activity = allActs[activityId];
     return (
       <div>
         <main>
@@ -55,7 +58,7 @@ const ActivityDescription = ({actID}) => {
 
             <div className={styles.instructions}>
                 <h2>Instructions:</h2>
-                <p> {activity.instructions} </p>
+                <p> {activity.instruction} </p>
             </div>
 
             <div className={styles.tips}>
@@ -65,16 +68,17 @@ const ActivityDescription = ({actID}) => {
         </section>
 
         <section className={styles.nextButton}>
-            <button onClick={() => console.log('"next" button pressed!')}>Next</button>
+          <Link to={`../mindfulness/mindfulness/${activityId}`}>
+            <div className={styles.nextButt}> Next </div>
+          </Link>
         </section>
       </main>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    name: state.acts.name,
   };
 };
 

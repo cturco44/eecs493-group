@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getActs } from './activities-list/data';
+import { getActs } from '../data';
 import { useState } from 'react';
 import { ReactComponent as Report } from './../images/icon-report.svg';
 import { ReactComponent as Back } from './../images/back-arrow-to-first-track-svgrepo-com 1.svg';
@@ -8,9 +8,9 @@ import { ReactComponent as Help } from './../images/help-button.svg';
 import { ReactComponent as blackStar } from './../images/star-black.svg';
 import { ReactComponent as goldStar } from './../images/star-gold.svg';
 import { connect } from 'react-redux';
-import './mindfulness.css';
+import './reflection.css';
 
-const mindfulness = () => {
+const Reflection = () => {
     let energy = 0;
     let happyness = 0;
     let excitement = 0;
@@ -132,8 +132,8 @@ const mindfulness = () => {
             </div>
 
           <div className="title">
-            <h1> PRE-ACTIVITY MINDFULNESS </h1>
-            <p className="titleSubscript">(BEFORE YOU BEGIN, PLEASE FILL OUT THIS QUICK SURVEY)</p>
+            <h1> POST-ACTIVITY REFLECTION </h1>
+            <p className="titleSubscript">(PLEASE TAKE THE TIME TO REFLECT ON YOUR EXPERIENCE)</p>
             <hr className="lineBreak"/>
           </div>
 
@@ -153,7 +153,7 @@ const mindfulness = () => {
             </div>
 
             <div className="description">
-                <h3>How excited are you about doing this session?</h3>
+                <h3>How much did you enjoy this session?</h3>
                 <div className="starsContainer">
                     {excitmentList}
                 </div>
@@ -165,7 +165,7 @@ const mindfulness = () => {
         </div>
 
         <div className="buttonContainer">
-            <button onClick={() => console.log('"begin activity" button pressed!')} className="beginButton" type="button">Begin Activity</button>
+            <button onClick={() => console.log('"submit" button pressed!')} className="beginButton" type="button">Submit</button>
         </div>
         </main>
       </div>

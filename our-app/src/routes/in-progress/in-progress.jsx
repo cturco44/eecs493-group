@@ -8,10 +8,12 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { React, useState } from 'react'
 import styles from './InProgress.module.css';
+import {useParams} from 'react-router-dom'
 
 
 const InProgress = () => {
-  let activityID = 1;
+  let params = useParams();
+  let activityID = parseInt(params.actId, 10);
   let activityDict = getActInfo();
 
   const [is_open, setOpenPopup] = useState(false);

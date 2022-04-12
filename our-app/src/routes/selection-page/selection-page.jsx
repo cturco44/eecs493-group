@@ -3,76 +3,82 @@ import { React, useState } from 'react';
 import './selection_page.css';
 
 import { connect } from 'react-redux';
-import { selectCategory } from '../../redux/Acts/actsActions';
+import { selectCategory, selectTime } from '../../redux/Acts/actsActions';
 
 function ActivityButton(props) {
   return (
-    <button className={props.ActivityButt} onClick={() => selectCategory('social')}></button>
+    <button
+      className={props.ActivityButt}
+      onClick={() => selectCategory('social')}
+    ></button>
   );
 }
 
-const SelectionPage = ({ selectCategory }) => {
-  const [time, setName] = useState("enter your time");
+const SelectionPage = ({ selectCategory, selectTime }) => {
+  const [time, setTime] = useState('enter your time');
   return (
-      <div>
-        <div className="topBuff"></div>
+    <div>
+      <div className="topBuff"></div>
 
-        <input type="button" className="report" />
+      <input type="button" className="report" />
 
-        <div className = "header">
-          <p> Hi, name! </p>
+      <div className="header">
+        <p> Hi, name! </p>
+      </div>
+
+      <div className="minQ">
+        <p> First, how many minutes want to be outside for? </p>
+      </div>
+
+      <form>
+        {/* TODO: add to state */}
+        <input
+          type="text"
+          value={time}
+          placeholder="time"
+          onChange={(e) => setTime(e.target.value)}
+        />
+      </form>
+
+      <div className="categoryQ">
+        <p> Now, select categories you are interested in: </p>
+      </div>
+
+      <div className="actionButts">
+        <div className="button_w_text">
+          <button onClick={() => selectCategory('social')}>Social</button>
+          <span className="Caption">Social</span>
         </div>
 
-        <div className = "minQ">
-          <p> First, how many minutes want to be outside for? </p>
+        <div className="button_w_text">
+          <button onClick={() => selectCategory('exercise')}>Exercise</button>
+          <span className="Caption">Exercise</span>
         </div>
 
-        <form>
-          {/* TODO: add to state */}
-          <input type="text" value={time} placeholder="time" onChange={e => setName(e.target.value)}/>
-
-        </form>
-
-        <div className= "categoryQ">
-          <p> Now, select categories you are interested in: </p>
+        <div className="button_w_text">
+          <button onClick={() => selectCategory('mental')}>Mental</button>
+          <span className="Caption">Mental</span>
         </div>
 
-        <div className="actionButts">
-
-          <div className='button_w_text'>
-            <button onClick={() => selectCategory('social')}>Social</button>
-            <span className='Caption'>Social</span>
-          </div>
-
-          <div className='button_w_text'>
-            <button onClick={() => selectCategory('exercise')}>Exercise</button>
-            <span className='Caption'>Exercise</span>
-          </div>
-
-          <div className='button_w_text'>
-            <button onClick={() => selectCategory('mental')}>Mental</button>
-            <span className='Caption'>Mental</span>
-          </div>
-
-          {/* <ActivityButton ActivityButt="Social" className = 'Social' />
+        {/* <ActivityButton ActivityButt="Social" className = 'Social' />
 
           <ActivityButton ActivityButt="Exercise" className = 'Exercise' onClick={() => selectCategory('exercise')}/>
           <ActivityButton ActivityButt="Mental" className = 'Mental' onClick={() => selectCategory('mental')}/> */}
-
-        </div>
-        <Link to="../activities-list/activities-list">find activities</Link>
-
-        <div className="bottBuff"></div>
       </div>
+      <Link to="../activities-list/activities-list">
+        <button onClick={() => selectTime(time)}>find activities</button>
+      </Link>
 
+      <div className="bottBuff"></div>
+    </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectCategory: (cat) => dispatch(selectCategory(cat)),
+    selectTime: (time) => dispatch(selectTime(time)),
   };
 };
 
 export default connect(null, mapDispatchToProps)(SelectionPage);
-

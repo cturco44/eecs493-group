@@ -1,10 +1,43 @@
 import * as actionTypes from './actsTypes';
 
 const INITIAL_STATE = {
-  category: 'mental',
-  time: 10,
+  category: '',
+  time: 0,
   score: 0,
-  completed: [],
+  preActRate: 0,
+  preActNote: 'pre',
+  postActRate: 5,
+  postActNote: 'post',
+  completed: [
+    {
+      id: 1,
+      duration: 10,
+      ptsEarned: 400,
+      preActRate: 3,
+      preActNote: 'hello',
+      postActRate: 5,
+      postActNote: 'bye',
+    },
+    {
+      id: 2,
+      duration: 10,
+      ptsEarned: 400,
+      preActRate: 3,
+      preActNote: 'hello',
+      postActRate: 5,
+      postActNote: 'bye',
+    },
+    {
+      id: 3,
+      duration: 10,
+      ptsEarned: 400,
+      preActRate: 3,
+      preActNote: 'hello',
+      postActRate: 5,
+      postActNote: 'bye',
+    },
+  ], // {id, duration, ptsEarned, preActRate, preActNote, postActRate, postActNote}
+  name: 'john',
 };
 
 const actsReducer = (state = INITIAL_STATE, action) => {
@@ -12,7 +45,21 @@ const actsReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.CATEGORY:
       return { ...state, category: action.payload.id };
     case actionTypes.TIME:
-      return {};
+      return { ...state, time: action.payload.id };
+    case actionTypes.SCORE:
+      return { ...state, score: action.payload.id };
+    case actionTypes.COMPLETED:
+      return { ...state, completed: action.payload.id };
+    case actionTypes.NAME:
+      return { ...state, score: action.payload.id };
+    case actionTypes.PRE_ACT_RATE:
+      return { ...state, score: action.payload.id };
+    case actionTypes.PRE_ACT_NOTE:
+      return { ...state, score: action.payload.id };
+    case actionTypes.POST_ACT_RATE:
+      return { ...state, score: action.payload.id };
+    case actionTypes.POST_ACT_NOTE:
+      return { ...state, score: action.payload.id };
     default:
       return state;
   }

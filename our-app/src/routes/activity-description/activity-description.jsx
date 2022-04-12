@@ -65,15 +65,15 @@ const ActivityDescription = ({actName}) => {
         <section className={styles.nextButton}>
             <button onClick={() => console.log('"next" button pressed!')}>Next</button>
         </section>
-        </main>
-      </div>
-    );
-  };
+      </main>
+    </div>
+  );
+};
 
-  const mapStateToProps = (state) => {
-    return {
-      name: state.activity.name,
-    };
+const mapStateToProps = (state) => {
+  return {
+    name: state.activity.name,
   };
+};
 
-  export default connect(mapStateToProps)(ActivityDescription);
+export default connect(mapStateToProps)(ActivityDescription);

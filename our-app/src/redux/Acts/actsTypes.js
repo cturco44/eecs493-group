@@ -1,2 +1,9 @@
 export const CATEGORY = 'CATEGORY';
 export const TIME = 'TIME';
+export const SCORE = 'SCORE';
+export const COMPLETED = 'COMPLETED';
+export const NAME = 'NAME';
+export const PRE_ACT_RATE = 'PRE_ACT_RATE';
+export const PRE_ACT_NOTE = 'PRE_ACT_NOTE';
+export const POST_ACT_RATE = 'POST_ACT_RATE';
+export const POST_ACT_NOTE = 'POST_ACT_NOTE';

@@ -6,7 +6,7 @@ import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivitiesList.module.css';
 
-const ActivitiesList = ({ category, time }) => {
+const ActivitiesList = ({ category, time, score }) => {
   let allActs = getActs();
   let acts = allActs.filter((allActs) => allActs.category === category);
   /* const socialActs = ['outdoor walk with friend', 'picnic'];
@@ -66,6 +66,7 @@ const mapStateToProps = (state) => {
   return {
     category: state.acts.category,
     time: state.acts.time,
+    score: state.acts.score,
   };
 };
 

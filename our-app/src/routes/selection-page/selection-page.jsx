@@ -3,16 +3,19 @@ import { React, useState } from 'react';
 import styles from './SelectionPage.module.css';
 
 import { connect } from 'react-redux';
-import { selectCategory } from '../../redux/Acts/actsActions';
+import { selectCategory, selectTime } from '../../redux/Acts/actsActions';
 
 function ActivityButton(props) {
   return (
-    <button className={props.ActivityButt} onClick={() => selectCategory('social')}></button>
+    <button
+      className={props.ActivityButt}
+      onClick={() => selectCategory('social')}
+    ></button>
   );
 }
 
 const SelectionPage = ({ selectCategory }) => {
-  const [time, setName] = useState("");
+  const [time, setTime] = useState("");
   return (
       <div>
         <div className={styles.topBuff}></div>
@@ -29,9 +32,21 @@ const SelectionPage = ({ selectCategory }) => {
 
         <form>
           {/* TODO: add to state */}
-          <input type="text" value={time} placeholder="enter your time" onChange={e => setName(e.target.value)}/>
-
+          <input type="text" value={time} placeholder="enter your time" onChange={e => setTime(e.target.value)}/>
         </form>
+      <form>
+        {/* TODO: add to state */}
+        <input
+          type="text"
+          value={time}
+          placeholder="time"
+          onChange={(e) => setTime(e.target.value)}
+        />
+      </form>
+
+      <div className="categoryQ">
+        <p> Now, select categories you are interested in: </p>
+      </div>
 
         <div className= {styles.categoryQ}>
           <p> Now, select categories you are interested in: </p>
@@ -54,25 +69,25 @@ const SelectionPage = ({ selectCategory }) => {
             <span className={styles.Caption}>Mental</span>
           </div>
 
-          {/* <ActivityButton ActivityButt="Social" className = 'Social' />
+        {/* <ActivityButton ActivityButt="Social" className = 'Social' />
 
           <ActivityButton ActivityButt="Exercise" className = 'Exercise' onClick={() => selectCategory('exercise')}/>
           <ActivityButton ActivityButt="Mental" className = 'Mental' onClick={() => selectCategory('mental')}/> */}
-
-        </div>
-        <Link to="../activities-list/activities-list">find activities</Link>
-
-        <div className={styles.bottBuff}></div>
       </div>
+      <Link to="../activities-list/activities-list">
+        <button onClick={() => selectTime(time)}>find activities</button>
+      </Link>
 
+      <div className="bottBuff"></div>
+    </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectCategory: (cat) => dispatch(selectCategory(cat)),
+    selectTime: (time) => dispatch(selectTime(time)),
   };
 };
 
 export default connect(null, mapDispatchToProps)(SelectionPage);
-

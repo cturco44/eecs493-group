@@ -101,6 +101,7 @@ header {
   text-decoration: none;
   color: black;
   font-weight: var(--fw-bold);
+  text-transform: capitalize;
 }
 
 .act-name {

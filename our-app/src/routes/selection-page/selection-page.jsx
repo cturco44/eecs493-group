@@ -15,48 +15,49 @@ function ActivityButton(props) {
   );
 }
 
-const SelectionPage = ({ selectCategory }) => {
-  const [time, setTime] = useState("");
+const SelectionPage = ({ selectCategory, selectTime, name }) => {
+  const [time, setTime] = useState('');
   const [is_open, setOpenPopup] = useState(false);
   const closePopup = () => setOpenPopup(false);
 
   return (
+    <div>
+      <div className={styles.topBuff}></div>
+
+      <input type="button" className={styles.report} />
+
       <div>
-        <div className={styles.topBuff}></div>
-
-        <input type="button" className={styles.report} />
-
-        <div>
-          <div className={styles.report} onClick={() => setOpenPopup(is_open => !is_open)}>
-            Activity Description
+        <div
+          className={styles.report}
+          onClick={() => setOpenPopup((is_open) => !is_open)}
+        >
+          Activity Description
+        </div>
+        <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
+          <div className="act-popup">
+            <a className="x-button" onClick={closePopup}>
+              {' '}
+              &times;
+            </a>
+            Text HERE
           </div>
-          <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
-            <div className="act-popup">
-              <a className="x-button" onClick={closePopup}> &times;
-              </a>
-              Text HERE
-            </div>
-          </Popup>
-        </div>
+        </Popup>
+      </div>
 
-        <div className = {styles.header}>
-          <p> Hi, name! </p>
-        </div>
+      <div className={styles.header}>
+        <p> Hi, {name}! </p>
+      </div>
 
-        <div className = {styles.minQ}>
-          <p> First, how many minutes want to be outside for? </p>
-        </div>
+      <div className={styles.minQ}>
+        <p> First, how many minutes want to be outside for? </p>
+      </div>
 
-        <form>
-          {/* TODO: add to state */}
-          <input type="text" value={time} placeholder="enter your time" onChange={e => setTime(e.target.value)}/>
-        </form>
       <form>
         {/* TODO: add to state */}
         <input
           type="text"
           value={time}
-          placeholder="time"
+          placeholder="enter your time"
           onChange={(e) => setTime(e.target.value)}
         />
       </form>
@@ -65,26 +66,25 @@ const SelectionPage = ({ selectCategory }) => {
         <p> Now, select categories you are interested in: </p>
       </div>
 
-        <div className= {styles.categoryQ}>
-          <p> Now, select categories you are interested in: </p>
+      <div className={styles.categoryQ}>
+        <p> Now, select categories you are interested in: </p>
+      </div>
+
+      <div className={styles.actionButts}>
+        <div className={styles.button_w_text}>
+          <button onClick={() => selectCategory('social')}>Social</button>
+          <span className={styles.Caption}>Social</span>
         </div>
 
-        <div className={styles.actionButts}>
+        <div className={styles.button_w_text}>
+          <button onClick={() => selectCategory('exercise')}>Exercise</button>
+          <span className={styles.Caption}>Exercise</span>
+        </div>
 
-          <div className={styles.button_w_text}>
-            <button onClick={() => selectCategory('social')}>Social</button>
-            <span className={styles.Caption}>Social</span>
-          </div>
-
-          <div className={styles.button_w_text}>
-            <button onClick={() => selectCategory('exercise')}>Exercise</button>
-            <span className={styles.Caption}>Exercise</span>
-          </div>
-
-          <div className={styles.button_w_text}>
-            <button onClick={() => selectCategory('mental')}>Mental</button>
-            <span className={styles.Caption}>Mental</span>
-          </div>
+        <div className={styles.button_w_text}>
+          <button onClick={() => selectCategory('mental')}>Mental</button>
+          <span className={styles.Caption}>Mental</span>
+        </div>
 
         {/* <ActivityButton ActivityButt="Social" className = 'Social' />
 
@@ -107,4 +107,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SelectionPage);
+const mapStateToProps = (state) => {
+  return {
+    name: state.acts.name,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectionPage);

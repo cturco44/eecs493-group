@@ -4,8 +4,8 @@ const INITIAL_STATE = {
   category: '',
   time: 0,
   score: 0,
-  preActNote: 'pre',
-  postActNote: 'post',
+  preActNote: '',
+  postActNote: '',
   preEnergy: 0,
   postEnergy: 0,
   preHappiness: 0,
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   timeSpent: 0, // in seconds
   timeStart: 0, // result of Date.now()
   timeEnd: 0, // result of Date.now()
-  name: 'john',
+  name: '',
   completed: [
     {
       id: 1,

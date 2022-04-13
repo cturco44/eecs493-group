@@ -4,10 +4,15 @@ const INITIAL_STATE = {
   category: '',
   time: 0,
   score: 0,
-  preActRate: 0,
   preActNote: 'pre',
-  postActRate: 5,
   postActNote: 'post',
+  preEnergy: 0,
+  postEnergy: 0,
+  preHappiness: 0,
+  postHappiness: 0,
+  preExcitement: 0,
+  postExcitement: 0,
+  name: 'john',
   completed: [
     {
       id: 1,
@@ -37,7 +42,6 @@ const INITIAL_STATE = {
       postActNote: 'bye',
     },
   ], // {id, duration, ptsEarned, preActRate, preActNote, postActRate, postActNote}
-  name: 'john',
 };
 
 const actsReducer = (state = INITIAL_STATE, action) => {
@@ -51,15 +55,27 @@ const actsReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.COMPLETED:
       return { ...state, completed: action.payload.id };
     case actionTypes.NAME:
-      return { ...state, score: action.payload.id };
-    case actionTypes.PRE_ACT_RATE:
-      return { ...state, score: action.payload.id };
+      return { ...state, name: action.payload.id };
+
     case actionTypes.PRE_ACT_NOTE:
-      return { ...state, score: action.payload.id };
-    case actionTypes.POST_ACT_RATE:
-      return { ...state, score: action.payload.id };
+      return { ...state, preActNote: action.payload.id };
+
     case actionTypes.POST_ACT_NOTE:
-      return { ...state, score: action.payload.id };
+      return { ...state, postActNote: action.payload.id };
+
+    case actionTypes.PRE_ENERGY:
+      return { ...state, preEnergy: action.payload.id };
+    case actionTypes.POST_ENERGY:
+      return { ...state, postEnergy: action.payload.id };
+    case actionTypes.PRE_HAPPINESS:
+      return { ...state, preHappiness: action.payload.id };
+    case actionTypes.POST_HAPPINESS:
+      return { ...state, postHappiness: action.payload.id };
+    case actionTypes.PRE_EXCITEMENT:
+      return { ...state, preExcitement: action.payload.id };
+    case actionTypes.POST_EXCITEMENT:
+      return { ...state, postExcitement: action.payload.id };
+
     default:
       return state;
   }

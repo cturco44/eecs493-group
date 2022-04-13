@@ -45,14 +45,6 @@ export const enterName = (name) => {
   };
 };
 
-export const enterPreRate = (rate) => {
-  return {
-    type: actionTypes.PRE_ACT_RATE,
-    payload: {
-      id: rate,
-    },
-  };
-};
 export const enterPreNote = (note) => {
   return {
     type: actionTypes.PRE_ACT_NOTE,
@@ -61,19 +53,60 @@ export const enterPreNote = (note) => {
     },
   };
 };
-export const enterPostRate = (rate) => {
-  return {
-    type: actionTypes.POST_ACT_RATE,
-    payload: {
-      id: rate,
-    },
-  };
-};
+
 export const enterPostNote = (note) => {
   return {
     type: actionTypes.POST_ACT_NOTE,
     payload: {
       id: note,
+    },
+  };
+};
+export const enterPreEnergy = (rate) => {
+  return {
+    type: actionTypes.PRE_ENERGY,
+    payload: {
+      id: rate,
+    },
+  };
+};
+export const enterPostEnergy = (rate) => {
+  return {
+    type: actionTypes.POST_ENERGY,
+    payload: {
+      id: rate,
+    },
+  };
+};
+export const enterPreHappiness = (rate) => {
+  return {
+    type: actionTypes.PRE_HAPPINESS,
+    payload: {
+      id: rate,
+    },
+  };
+};
+export const enterPostHappiness = (rate) => {
+  return {
+    type: actionTypes.POST_HAPPINESS,
+    payload: {
+      id: rate,
+    },
+  };
+};
+export const enterPreExcitement = (rate) => {
+  return {
+    type: actionTypes.PRE_EXCITEMENT,
+    payload: {
+      id: rate,
+    },
+  };
+};
+export const enterPostExcitement = (rate) => {
+  return {
+    type: actionTypes.POST_EXCITEMENT,
+    payload: {
+      id: rate,
     },
   };
 };

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { React, useState } from 'react';
 import styles from './SelectionPage.module.css';
+import Popup from 'reactjs-popup';
 
 import { connect } from 'react-redux';
 import { selectCategory, selectTime } from '../../redux/Acts/actsActions';
@@ -16,11 +17,27 @@ function ActivityButton(props) {
 
 const SelectionPage = ({ selectCategory }) => {
   const [time, setTime] = useState("");
+  const [is_open, setOpenPopup] = useState(false);
+  const closePopup = () => setOpenPopup(false);
+
   return (
       <div>
         <div className={styles.topBuff}></div>
 
         <input type="button" className={styles.report} />
+
+        <div>
+          <div className={styles.report} onClick={() => setOpenPopup(is_open => !is_open)}>
+            Activity Description
+          </div>
+          <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
+            <div className="act-popup">
+              <a className="x-button" onClick={closePopup}> &times;
+              </a>
+              Text HERE
+            </div>
+          </Popup>
+        </div>
 
         <div className = {styles.header}>
           <p> Hi, name! </p>

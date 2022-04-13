@@ -6,11 +6,13 @@ import { ReactComponent as Back } from './../../images/back-arrow-to-first-track
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
+import {useParams} from 'react-router-dom'
 
-const ActivityDescription = ({actName}) => {
-    // let allActs = getActs();
-    // let activity = allActs.filter((allActs) => allActs.name === actName);
-    let activity = []
+const ActivityDescription = () => {
+    let params = useParams();
+    let allActs = getActInfo();
+    let activityId = parseInt(params.actId, 10)
+    let activity = allActs[activityId];
     return (
       <div>
         <main>
@@ -54,7 +56,7 @@ const ActivityDescription = ({actName}) => {
 
             <div className={styles.instructions}>
                 <h2>Instructions:</h2>
-                <p> {activity.instructions} </p>
+                <p> {activity.instruction} </p>
             </div>
 
             <div className={styles.tips}>
@@ -64,17 +66,17 @@ const ActivityDescription = ({actName}) => {
         </section>
 
         <section className={styles.nextButton}>
-            <button onClick={() => console.log('"next" button pressed!')}>Next</button>
+          <Link to={`../mindfulness/mindfulness/${activityId}`}> {/* Add (w/o quotes): "/${activityId}`" */}
+            <div className={styles.nextButt}> Next </div>
+          </Link>
         </section>
       </main>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.activity.name,
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 export default connect(mapStateToProps)(ActivityDescription);

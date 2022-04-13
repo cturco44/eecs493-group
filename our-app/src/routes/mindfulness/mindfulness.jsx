@@ -12,9 +12,9 @@ import {useParams} from 'react-router-dom'
 
 
 const Mindfulness = () => {
-    let energy = 0;
-    let happiness = 0;
-    let excitement = 0;
+    const [energy, setEnergy] = useState(0);
+    const [happiness, setHappiness] = useState(0);
+    const [excitement, setExcitement] = useState(0);
     const [notes, setNotes] = useState("");
 
     let params = useParams();
@@ -29,8 +29,7 @@ const Mindfulness = () => {
     ]);
 
     const handleEnergyClick = (level) => {
-        energy = level;
-        console.log('Energy Level: ' + energy);
+        setEnergy(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){
@@ -52,8 +51,7 @@ const Mindfulness = () => {
     ]);
 
     const handleHappinessClick = (level) => {
-        happiness = level;
-        console.log('Happiness Level: ' + happiness);
+        setHappiness(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){
@@ -75,8 +73,7 @@ const Mindfulness = () => {
     ]);
 
     const handleExcitementClick = (level) => {
-        excitement = level;
-        console.log('excitement Level: ' + excitement);
+        setExcitement(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){

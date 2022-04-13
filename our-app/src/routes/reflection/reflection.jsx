@@ -11,10 +11,13 @@ import './reflection.css';
 import {useParams} from 'react-router-dom'
 
 
+
 const Reflection = () => {
-    let energy = 0;
-    let happiness = 0;
-    let excitement = 0;
+
+    const [energy, setEnergy] = useState(0);
+    const [happiness, setHappiness] = useState(0);
+    const [excitement, setExcitement] = useState(0);
+
     const [notes, setNotes] = useState("");
 
     let params = useParams();
@@ -29,8 +32,7 @@ const Reflection = () => {
     ]);
 
     const handleEnergyClick = (level) => {
-        energy = level;
-        console.log('Energy Level: ' + energy);
+        setEnergy(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){
@@ -52,8 +54,7 @@ const Reflection = () => {
     ]);
 
     const handleHappinessClick = (level) => {
-        happiness = level;
-        console.log('Happiness Level: ' + happiness);
+        setHappiness(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){
@@ -75,8 +76,7 @@ const Reflection = () => {
     ]);
 
     const handleExcitementClick = (level) => {
-        excitement = level;
-        console.log('Excitement Level: ' + excitement);
+        setExcitement(level);
         let temp = [];
         let j = 0;
         for(let i = 0; i < level; i++){
@@ -90,7 +90,7 @@ const Reflection = () => {
     }
 
     const handleButtonClick = () => {
-        console.log('"begin activity" button pressed!')
+        console.log('"Finish Activity" button pressed!')
         console.log("postEnergy: " + energy);
         console.log("postHappiness: " + happiness);
         console.log("postExcitement: " + excitement);

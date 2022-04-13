@@ -9,6 +9,7 @@ import { ReactComponent as Goldstar } from './../../images/star-gold.svg';
 import { connect } from 'react-redux';
 import './reflection.css';
 import {useParams} from 'react-router-dom'
+import { enterPostEnergy, enterPostExcitement, enterPostHappiness, enterPostNote } from '../../redux/Acts/actsActions';
 
 
 
@@ -32,6 +33,7 @@ const Reflection = () => {
     ]);
 
     const handleEnergyClick = (level) => {
+        enterPostEnergy(level);
         setEnergy(level);
         let temp = [];
         let j = 0;
@@ -54,6 +56,7 @@ const Reflection = () => {
     ]);
 
     const handleHappinessClick = (level) => {
+        enterPostHappiness(level);
         setHappiness(level);
         let temp = [];
         let j = 0;
@@ -76,6 +79,7 @@ const Reflection = () => {
     ]);
 
     const handleExcitementClick = (level) => {
+        enterPostExcitement(level);
         setExcitement(level);
         let temp = [];
         let j = 0;
@@ -90,6 +94,7 @@ const Reflection = () => {
     }
 
     const handleButtonClick = () => {
+        enterPostNote(notes);
         console.log('"Finish Activity" button pressed!')
         console.log("postEnergy: " + energy);
         console.log("postHappiness: " + happiness);

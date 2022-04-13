@@ -9,6 +9,7 @@ import { ReactComponent as Goldstar } from './../../images/star-gold.svg';
 import { connect } from 'react-redux';
 import './mindfulness.css';
 import {useParams} from 'react-router-dom'
+import { enterPreEnergy, enterPreExcitement, enterPreHappiness, enterPreNote } from '../../redux/Acts/actsActions';
 
 
 const Mindfulness = () => {
@@ -29,6 +30,7 @@ const Mindfulness = () => {
     ]);
 
     const handleEnergyClick = (level) => {
+        enterPreEnergy(level);
         setEnergy(level);
         let temp = [];
         let j = 0;
@@ -51,6 +53,7 @@ const Mindfulness = () => {
     ]);
 
     const handleHappinessClick = (level) => {
+        enterPreHappiness(level);
         setHappiness(level);
         let temp = [];
         let j = 0;
@@ -73,6 +76,7 @@ const Mindfulness = () => {
     ]);
 
     const handleExcitementClick = (level) => {
+        enterPreExcitement(level);
         setExcitement(level);
         let temp = [];
         let j = 0;
@@ -87,6 +91,7 @@ const Mindfulness = () => {
     }
 
     const handleButtonClick = () => {
+        enterPreNote(notes);
         console.log('"begin activity" button pressed!')
         console.log("preEnergy: " + energy);
         console.log("preHappiness: " + happiness);

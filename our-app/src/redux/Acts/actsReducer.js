@@ -12,6 +12,8 @@ const INITIAL_STATE = {
   postHappiness: 0,
   preExcitement: 0,
   postExcitement: 0,
+  timeStart: 0, // result of Date.now()
+  timeEnd: 0, // result of Date.now()
   name: '',
   completed: [
     {
@@ -22,6 +24,8 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
+      timeStart: 0,
+      timeEnd: 0,
     },
     {
       id: 2,
@@ -31,6 +35,8 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
+      timeStart: 0,
+      timeEnd: 0,
     },
     {
       id: 3,
@@ -40,6 +46,8 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
+      timeStart: 0,
+      timeEnd: 0,
     },
   ], // {id, duration, ptsEarned, preActRate, preActNote, postActRate, postActNote}
 };
@@ -75,6 +83,10 @@ const actsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, preExcitement: action.payload.id };
     case actionTypes.POST_EXCITEMENT:
       return { ...state, postExcitement: action.payload.id };
+    case actionTypes.TIME_START:
+      return { ...state, timeStart: action.payload.id };
+    case actionTypes.TIME_END:
+      return { ...state, timeEnd: action.payload.id };
 
     default:
       return state;

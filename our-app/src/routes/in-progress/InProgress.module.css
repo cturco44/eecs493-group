@@ -1,9 +1,11 @@
-/* .score {
-  font-size: 1.5rem;
-} */
+header {
+  /* background-color: var(--clr-accent); */
+}
 
-main{ /* TODO: delete?: this is a temp fix*/
-  display: block
+.back {
+  color: black;
+  width: 3em;
+  height: 3em;
 }
 
 .selected {
@@ -23,28 +25,12 @@ main{ /* TODO: delete?: this is a temp fix*/
   left: 0;
 }
 
-#header-title {
+#headerTitle {
   font-weight: var(--fw-bold);
   font-size: 2rem
 }
 
-.help-button {
-  width: 20px;
-  height: 20px;
-  margin-right: 1em;
-}
-
-.back-button {
-  width: 3em;
-  height: 3em;
-}
-
-.icon-report {
-  width: 3em;
-  height: 3em;
-}
-
-div.button-green {
+div.buttonGreen {
   background-color: var(--clr-accent);
   display: flex;
   align-items: center;
@@ -55,20 +41,44 @@ div.button-green {
   font-weight: var(--fw-bold);
 }
 
-p.stopwatch-text {
+p.stopwatchText {
   color: var(--clr-accent);
   font-size: 3rem;
   font-weight: var(--fw-bold);
 }
 
-.time-display {
+.timeDisplay {
   padding: 4rem;
 }
 
-.act-popup {
+.actPopup {
 
 }
 
-.x-button {
+.xButton {
+  color: black;
+  position: absolute;
+  left: 1rem;
+}
 
+.popup-content {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.popup-content-section {
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.lineBreak{
+  width: 50%;
+  height: 3px;
+  background-color: grey;
+  opacity: 20%;
 }

@@ -17,7 +17,6 @@
 }
 
 .header {
-
   font-weight: 700;
   font-size: 100px;
   text-align: center;
@@ -64,4 +63,27 @@ input[type=fname]:focus {
   font-size: 25px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.popup {
+  position: relative;
+}
+
+.xButton {
+  color: black;
+  position: absolute;
+  left: 1rem;
+}
+
+.error-header {
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.error-content {
+  font-size: 18px;
+  margin-left: 5%;
+  margin-right: 5%;
+  overflow-wrap: normal;
 }

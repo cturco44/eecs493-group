@@ -79,7 +79,7 @@
   background-image: url('kate.jpg');
 }
 
-.report {
+/* .report {
   background-image: url('report.svg');
   width: 70px;
   height: 70px;
@@ -87,7 +87,7 @@
   float: right;
   margin-top: 70px;
   margin-right: 20px;
-}
+} */
 
 input[type='fmins'] {
   box-sizing: border-box;
@@ -110,4 +110,59 @@ div.button_w_text {
   font-size: 20px;
   display: block;
   margin-top: 10px;
+}
+
+.xButton {
+  color: black;
+  position: absolute;
+  left: 1rem;
+}
+
+.popup {
+  /* background-color: #E5E9EC; */
+  position: relative;
+}
+
+.help-header {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin: 2.5%;
+  display: flex;
+  justify-content: center;
+}
+
+.help-header::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  bottom: -1em;
+  left: 0;
+}
+
+.help-question {
+  font-weight: bold;
+}
+
+.help-question-answer {
+  font-size: 16px;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  overflow-wrap: normal;
+}
+
+.error-header {
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.error-content {
+  font-size: 18px;
+  margin-left: 5%;
+  margin-right: 5%;
+  overflow-wrap: normal;
 }

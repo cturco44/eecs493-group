@@ -15,6 +15,7 @@ import {
   enterPostHappiness,
   enterPostNote,
 } from '../../redux/Acts/actsActions';
+import Popup from 'reactjs-popup';
 
 const Reflection = ({
   enterPostEnergy,
@@ -25,6 +26,8 @@ const Reflection = ({
   const [energy, setEnergy] = useState(0);
   const [happiness, setHappiness] = useState(0);
   const [excitement, setExcitement] = useState(0);
+  const [is_openConfirm, setOpenConfirm] = useState(false);
+  const closePopupConfirm = () => setOpenConfirm(false);
 
   const [notes, setNotes] = useState('');
 
@@ -229,19 +232,38 @@ const Reflection = ({
   return (
     <div>
       <main>
-              <div className={styles.header}>
-                <div>           
-                    {/*<Link to="/"> 
+        <div className={styles.header}>
+          <div>
+            {/*<Link to="/"> 
                         <Help className={styles.helpButton} />
                     </Link>*/}
-                    <Link to="/"> 
-                        <Report className={styles.reportButton} />
-                    </Link>
-                    <Link to="/selection-page/selection-page"> 
-                        <Home className={styles.homeButton} />
-                    </Link>
+            <Link to="/">
+              <Report className={styles.reportButton} />
+            </Link>
+
+            <Home
+              className={styles.homeButton}
+              onClick={() =>
+                setOpenConfirm((is_openConfirm) => !is_openConfirm)
+              }
+            />
+            <Popup
+              open={is_openConfirm}
+              closeOnDocumentClick
+              onClose={closePopupConfirm}
+            >
+              <div className={styles.actPopup}>
+                <p>Are you sure you want to leave this page?</p>
+                <div className={styles['confirm-buttons']}>
+                  <button onClick={closePopupConfirm}> No </button>
+                  <Link to="/selection-page/selection-page">
+                    <button>Yes</button>
+                  </Link>
                 </div>
-            </div>
+              </div>
+            </Popup>
+          </div>
+        </div>
 
         <div className={styles.title}>
           <h1> POST-ACTIVITY REFLECTION </h1>
@@ -276,7 +298,7 @@ const Reflection = ({
             className={styles.textBox}
             type="text"
             placeholder="Notes..."
-            style={{textAlign: 'left', width: '85%'}}
+            style={{ textAlign: 'left', width: '85%' }}
           ></textarea>
         </div>
 

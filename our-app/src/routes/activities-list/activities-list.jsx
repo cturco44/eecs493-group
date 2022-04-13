@@ -41,24 +41,12 @@ const ActivitiesList = ({ category, time, score }) => {
               <Link
                 to={`../activity-description/activity-description/${acts.number}`}
                 key={acts.number}
-                className="act"
+                className={styles['act']}
               >
                 <p className={styles['act-name']}>{acts.name}</p>
                 <p className={styles.pts}>{acts.points}</p>
               </Link>
             ))}
-
-            <div> {/* TODO: DELETE; DO NOT MERGE */}
-              <Link to={'../in-progress/in-progress'}> SHORTCUT TO IN-PROGRESS </Link>
-            </div>
-            {/* <div className="act-1">
-              <p className="act">a</p>
-              <p className="pts">1</p>
-            </div>
-            <div className="act-2">
-              <p className="act">a</p>
-              <p className="pts">1</p>
-            </div> */}
           </div>
         </section>
       </main>

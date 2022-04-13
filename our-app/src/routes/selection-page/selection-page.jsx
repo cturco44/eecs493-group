@@ -15,7 +15,7 @@ function ActivityButton(props) {
   );
 }
 
-const SelectionPage = ({ selectCategory, selectTime }) => {
+const SelectionPage = ({ selectCategory, selectTime, name }) => {
   const [time, setTime] = useState('');
   const [is_open, setOpenPopup] = useState(false);
   const closePopup = () => setOpenPopup(false);
@@ -45,7 +45,7 @@ const SelectionPage = ({ selectCategory, selectTime }) => {
       </div>
 
       <div className={styles.header}>
-        <p> Hi, name! </p>
+        <p> Hi, {name}! </p>
       </div>
 
       <div className={styles.minQ}>
@@ -107,4 +107,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SelectionPage);
+const mapStateToProps = (state) => {
+  return {
+    name: state.acts.name,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectionPage);

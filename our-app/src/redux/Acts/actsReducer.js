@@ -4,15 +4,15 @@ const INITIAL_STATE = {
   category: '',
   time: 0,
   score: 0,
-  preActNote: 'pre',
-  postActNote: 'post',
+  preActNote: '',
+  postActNote: '',
   preEnergy: 0,
   postEnergy: 0,
   preHappiness: 0,
   postHappiness: 0,
   preExcitement: 0,
   postExcitement: 0,
-  name: 'john',
+  name: '',
   completed: [
     {
       id: 1,

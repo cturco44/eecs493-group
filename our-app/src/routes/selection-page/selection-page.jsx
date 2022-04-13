@@ -59,7 +59,7 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
   return (
     <div>
       <div className={styles.topBuff}>
-        <Link to="/"> {/** TODO: Reroute to report page */}
+        <Link to="../dashboard/dashboard"> {/** TODO: Reroute to report page */}
           <Report className={styles['report-button']}/>
         </Link>
 
@@ -109,10 +109,6 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
           onChange={(e) => setTime(e.target.value)}
         />
       </form>
-
-      <div className="categoryQ">
-        <p> Now, select categories you are interested in: </p>
-      </div>
 
       <div className={styles.categoryQ}>
         <p> Now, select categories you are interested in: </p>

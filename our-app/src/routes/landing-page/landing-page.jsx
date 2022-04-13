@@ -6,12 +6,7 @@ import { connect } from 'react-redux';
 import { enterName } from '../../redux/Acts/actsActions';
 
 const isValidName = (name) => {
-  for (let i = 0; i < name.length; i++) {
-    if (!(name[i] >= "a" && name[i] <= "z") && !(name[i] === "-") && !(name[i] === " ")) {
-      return false;
-    }
-  }
-  return true;
+  return /^[a-zA-Z ]+$/.test(name);
 }
 
 const LandingPage = ({ enterName }) => {

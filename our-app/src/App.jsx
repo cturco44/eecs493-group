@@ -9,7 +9,7 @@ import ActivityDescription from './routes/activity-description/activity-descript
 import InProgress from './routes/in-progress/in-progress';
 import Mindfulness from './routes/mindfulness/mindfulness';
 import Reflection from './routes/reflection/reflection';
-
+import Dashboard from './routes/dashboard/dashboard';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path="/in-progress/in-progress/:actId" element={<InProgress />} />
           <Route path="/mindfulness/mindfulness/:actId" element={<Mindfulness />} />
           <Route path="/reflection/reflection" element={<Reflection />} />
+          <Route path="/dashboard/dashboard" element={<Dashboard />}/>
         </Routes>
       </BrowserRouter>
     </div>

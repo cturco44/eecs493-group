@@ -12,7 +12,6 @@ const INITIAL_STATE = {
   postHappiness: 0,
   preExcitement: 0,
   postExcitement: 0,
-  timeSpent: 0, // in seconds
   timeStart: 0, // result of Date.now()
   timeEnd: 0, // result of Date.now()
   name: '',
@@ -25,7 +24,6 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
-      timeSpent: 0,
       timeStart: 0,
       timeEnd: 0,
     },
@@ -37,7 +35,6 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
-      timeSpent: 0,
       timeStart: 0,
       timeEnd: 0,
     },
@@ -49,7 +46,6 @@ const INITIAL_STATE = {
       preActNote: 'hello',
       postActRate: 5,
       postActNote: 'bye',
-      timeSpent: 0,
       timeStart: 0,
       timeEnd: 0,
     },
@@ -87,9 +83,6 @@ const actsReducer = (state = INITIAL_STATE, action) => {
       return { ...state, preExcitement: action.payload.id };
     case actionTypes.POST_EXCITEMENT:
       return { ...state, postExcitement: action.payload.id };
-
-    case actionTypes.TIME_SPENT:
-      return { ...state, timeSpent: action.payload.id };
     case actionTypes.TIME_START:
       return { ...state, timeStart: action.payload.id };
     case actionTypes.TIME_END:

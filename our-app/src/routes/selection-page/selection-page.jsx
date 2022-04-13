@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { React, useState } from 'react';
 import styles from './SelectionPage.module.css';
 import Popup from 'reactjs-popup';
+import { ReactComponent as Report } from './../../images/icon-report.svg';
+import { ReactComponent as Help } from './../../images/help-button.svg';
 
 import { connect } from 'react-redux';
 import { selectCategory, selectTime } from '../../redux/Acts/actsActions';
@@ -22,24 +24,36 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
 
   return (
     <div>
-      <div className={styles.topBuff}></div>
+      <div className={styles.topBuff}>
+        <Link to="/"> {/** TODO: Reroute to report page */}
+          <Report className={styles['report-button']}/>
+        </Link>
 
-      <input type="button" className={styles.report} />
-
-      <div>
-        <div
-          className={styles.report}
-          onClick={() => setOpenPopup((is_open) => !is_open)}
-        >
-          Activity Description
-        </div>
+        <Help className={styles['help-button']}
+              onClick={() => setOpenPopup(is_open => !is_open)}/>
         <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
-          <div className="act-popup">
-            <a className="x-button" onClick={closePopup}>
-              {' '}
-              &times;
-            </a>
-            Text HERE
+          <div className={styles['help-popup']}>
+            <a className={styles.xButton} onClick={closePopup}> &times; </a>
+            <div className={styles['help-header']}>
+              HELP
+            </div>
+            <section className={styles['help-question-answer']}>
+              <div className={styles['help-question']}>What is APP_NAME?</div>
+              <p>APP_NAME is a program aimed at getting people outside. That’s it.
+                It gives its users complete flexibility of choice in time and
+                location, then suggests a couple of fun activities to do outside,
+                from taking a walk with a friend to a outdoor photography
+                scavenger hunt.
+              </p>
+            </section>
+            <section className={styles['help-question-answer']}>
+              <div className={styles['help-question']}>About categories</div>
+              <p>APP_NAME suggests a variety of outdoor activities that can
+                roughly be sorted into 3 categories.</p>
+              <p>Social: activities with any social aspect.</p>
+              <p>Exercise: activities that focus on more physically intense activities outdoors.</p>
+              <p>Mental: activities that help you destress or give you a change of pace.</p>
+            </section>
           </div>
         </Popup>
       </div>

@@ -1,20 +1,21 @@
-import { Link } from 'react-router-dom';
 // import { ReactComponent as Report } from './../../images/icon-report.svg';
+import { React, useState } from 'react'
 import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
-import { getActInfo } from '../activity-description/data';
+import { Link, useParams } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import { React, useState } from 'react'
+import { enterTimeStart, enterTimeEnd } from '../../redux/Acts/actsActions';
+import { getActInfo } from '../activity-description/data';
 import styles from './InProgress.module.css';
-import {useParams} from 'react-router-dom'
-import { enterTimeStart, enterTimeEnd, enterTimeSpent } from '../../redux/Acts/actsActions';
+import { ReactComponent as Report } from './../../images/icon-report.svg';
+import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
+import { ReactComponent as Help } from './../../images/help-button.svg';
 
 
 const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
   let params = useParams();
   let activityID = parseInt(params.actId, 10);
-  let activityDict = getActInfo();
+  let activity = getActInfo()[activityID];
 
   const [is_open, setOpenPopup] = useState(false);
   const closePopup = () => setOpenPopup(false);
@@ -24,17 +25,17 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
 
   return (<div>
     <main>
-      <div>
-        {/* <Link to={`/activity-description/activity-description/${activityID}`}> TODO: change */}
-          {/* <Back className={styles.backButton}/> */}
-        {/* </Link> */}
+      <header>
+        <Link className={styles.back} to="../selection-page/selection-page">
+          <Back className={styles['back-button']} />
+        </Link>
         <div className={styles.score}>Score: {score}</div>
-        {/* <Report className={styles.iconReport}/> */}
-      </div>
+        <Report className={styles['icon-report']} />
+      </header>
 
       <div className={styles.inProgress}>
         <h1 className={styles.selected}>
-          <p id={styles.headerTitle}>{activityDict[activityID].name}</p>
+          <p id={styles.headerTitle}>{activity.name}</p>
           <p>In Progress</p>
         </h1>
 
@@ -44,9 +45,30 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
           </div>
           <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
             <div className={styles.actPopup}>
-              <a className={styles.xButton} onClick={closePopup}> &times;
-              </a>
-              Text HERE
+              <a className={styles.xButton} onClick={closePopup}> &times; </a>
+              <div>
+                <section>
+                  <h1> {activity.name} </h1>
+                  <hr className={styles.lineBreak}/>
+                </section>
+
+                <section className={styles['popup-content']}>
+                  <div className={styles['popup-content-section']}>
+                    <h1>Description:</h1>
+                    <p> {activity.description} </p>
+                  </div>
+
+                  <div className={styles['popup-content-section']}>
+                    <h1>Instructions:</h1>
+                    <p> {activity.instruction} </p>
+                  </div>
+
+                  <div className={styles['popup-content-section']}>
+                    <h1>Tips:</h1>
+                    <p> {activity.tips} </p>
+                  </div>
+                </section>
+              </div>
             </div>
           </Popup>
         </div>
@@ -73,14 +95,12 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
         </div>
       </Link>
 
-
     </main>
   </div>);
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // enterTimeSpent: (time) => dispatch(enterTimeSpent(time)),
     enterTimeStart: (time) => dispatch(enterTimeStart(time)),
     enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
   };

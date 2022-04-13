@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getActInfo } from './data';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
@@ -6,13 +6,18 @@ import { ReactComponent as Back } from './../../images/back-arrow-to-first-track
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
-import {useParams} from 'react-router-dom'
+import { React, useState } from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const ActivityDescription = () => {
     let params = useParams();
     let allActs = getActInfo();
     let activityId = parseInt(params.actId, 10)
     let activity = allActs[activityId];
+
+    const [is_open, setOpenPopup] = useState(false);
+    const closePopup = () => setOpenPopup(false);
     return (
       <div>
         <main>

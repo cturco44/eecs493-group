@@ -9,83 +9,101 @@
     border-width: 3px;
     top: 0%;
     left: 0%;
-    position: fixed;
+    position: sticky;
     line-height: 100px;
 }
 
-.headerIcon .back-button{
+.backButton{
     flex-direction: row;
-    width: 40px;
+    width: 3em;
     height: 100%;
     vertical-align: middle;
-    float:left;
     padding-top: 30px;
     padding-inline: 20px;
+    float: left;
 }
 
-.headerIcon .report-button {
+
+.reportButton {
     padding-top: 30px;
     line-height: 140px;
     flex-direction: row;
-    width: 40px;
+    width: 3em;
     height: 100%;
     vertical-align: middle;
     padding-inline: 20px;
     float:right;
 }
 
-.headerIcon .home-button {
+.helpButton {
     padding-top: 30px;
     line-height: 140px;
     flex-direction: row;
-    width: 40px;
+    width: 3em;
     height: 100%;
     vertical-align: middle;
     padding-inline: 20px;
     float:right;
 }
 
-.headerIcon .help-button {
+
+.homeButton {
     padding-top: 30px;
     line-height: 140px;
     flex-direction: row;
-    width: 40px;
+    width: 3em;
     height: 100%;
     vertical-align: middle;
     padding-inline: 20px;
-    float:right;
+    float: right;
 }
 
 .activityName {
     text-align: center;
     font-size: large;
     font-weight: 900;
-    padding-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .lineBreak{
-    width: 50%;
-    height: 3px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
     background-color: grey;
     opacity: 20%;
+    padding-bottom: 1px;
+    width: 50%;
+    height: 1px;
+    z-index: 3;
 }
 
 .InfoContainer{
+    
+    justify-content: left;
+    align-items: left;
     padding-bottom: 40px;
+    text-align: left;
+    
 }
 
-.description{
+.descriptionContainer {
+    text-align: left;
     padding-bottom: 10px;
 }
 
-.instructions{
+.instructionsContainer{
     padding-bottom: 10px;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
 }
 
 .buttonContainer{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .nextButton{

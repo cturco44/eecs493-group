@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { getActInfo } from './data';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
-import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
-// import { ReactComponent as Home } from './../../images/home-button.svg';
+import { ReactComponent as Back } from './../../images/back.svg';
+import { ReactComponent as Home } from './../../images/home-button.svg';
 import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
@@ -13,61 +13,65 @@ const ActivityDescription = () => {
     let allActs = getActInfo();
     let activityId = parseInt(params.actId, 10)
     let activity = allActs[activityId];
+
+
+    function NewlineText(props) {
+      const text = props.text;
+      console.log(text);
+      const newText = text.split('\n').map(str => <p style={{textAlign: 'left', paddingBottom: '15px', paddingLeft: '20px'}} >{str}</p>);
+      return newText;
+    }
+
+    window.scrollTo(0, 0);
+
     return (
       <div>
         <main>
-          <div class="header d-flex flex-row justify-content-between align-items-center">
-            <img src="images/back.svg" alt="back icon"/>
-            <div class="d-flex flex-row justify-content-between align-items-center">
-                <img src="images/report.svg" class="me-3 icon" alt="report icon"/>
-                {/* <img src="images/home.svg" class="me-3 icon" alt="home icon"/> */}
-                <img src="images/question-mark.svg" class="me-3 icon" alt="question icon"/>
-            </div>
-          </div>
-
             <div className={styles.header}>
-
-                <div className={styles.headerIcon}>
-                    <Link to="/"> {/* TODO: change */}
-                        <Back className="back-button" />
+                <div>
+                    <Link to="/activities-list/activities-list"> 
+                        <Back className={styles.backButton} />
+                    </Link>                   
+                    {/*<Link to="/"> 
+                        <Help className={styles.helpButton} />
+                    </Link>*/}
+                    <Link to="/"> 
+                        <Report className={styles.reportButton} />
                     </Link>
-                    <Link to="/"> {/* TODO: change */}
-                        <Report className="report-button" />
-                    </Link>
-                    <Link to="/"> {/* TODO: change */}
-                        {/* <Home className="home-button" /> */}
-                    </Link>
-                    <Link to="/"> {/* TODO: change */}
-                        <Help className={styles['help-button']} />
+                    <Link to="/selection-page/selection-page"> 
+                        <Home className={styles.homeButton} />
                     </Link>
                 </div>
             </div>
 
-          <section className={styles.activityName}>
-            <h1> {activity.name} </h1>
-            <hr className={styles.lineBreak}/>
-          </section>
+          <div className={styles.activityName}>
+            <h1> {activity.name.toUpperCase()} </h1>
+            <p className="titleSubscript">
+            ({activity.points} POINTS)
+          </p>
+            <hr  className={styles.lineBreak} style={{alignItems: 'center', zIndex: '0'}}/>
+          </div>
 
-          <section className={styles.InfoContainer}>
-            <div className={styles.description}>
-                <h2>Description:</h2>
-                <p> {activity.description} </p>
+          <div className={styles.InfoContainer}>
+            <div className={styles.descriptionContainer}>
+                <h2 style={{textAlign: 'left', paddingLeft: '20px'}}>Description:</h2 >
+                <NewlineText style={{textAlign: 'left'}} text={activity.description} />
             </div>
 
-            <div className={styles.instructions}>
-                <h2>Instructions:</h2>
-                <p> {activity.instruction} </p>
+            <div className={styles.instructionsContainer}>
+                <h2 style={{textAlign: 'left', paddingLeft: '20px'}}>Instructions:</h2>
+                <NewlineText text={activity.instruction} />
             </div>
 
-            <div className={styles.tips}>
-                <h2>Tips:</h2>
-                <p> {activity.tips} </p>
+            <div>
+                <h2 style={{textAlign: 'left', paddingLeft: '20px'}}>Tips:</h2>
+                <NewlineText text={activity.tips} />
             </div>
-        </section>
+        </div>
 
-        <section className={styles.nextButton}>
-          <Link to={`../mindfulness/mindfulness/${activityId}`}> {/* Add (w/o quotes): "/${activityId}`" */}
-            <div className={styles.nextButt}> Next </div>
+        <section className={styles.buttonContainer}>
+          <Link to={`../mindfulness/mindfulness/${activityId}`}> 
+            <div className={styles.nextButton}> Next </div>
           </Link>
         </section>
       </main>

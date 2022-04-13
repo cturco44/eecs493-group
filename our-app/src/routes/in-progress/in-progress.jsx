@@ -9,25 +9,18 @@ import { React, useState } from 'react'
 import styles from './InProgress.module.css';
 import {useParams} from 'react-router-dom'
 import { enterTimeStart, enterTimeEnd, enterTimeSpent } from '../../redux/Acts/actsActions';
-// import Date.from Date;
 
-const enterTime = (timeStart) => {
-  let timeEnd = Date.now();
-  enterTimeEnd(timeEnd);
-  enterTimeStart(timeStart);
-  enterTimeSpent((timeEnd - timeStart));
-}
 
-const InProgress = () => {
+const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
   let params = useParams();
   let activityID = parseInt(params.actId, 10);
   let activityDict = getActInfo();
 
-  const [score] = useState(0);
   const [is_open, setOpenPopup] = useState(false);
   const closePopup = () => setOpenPopup(false);
 
   let timeStart = Date.now();
+  enterTimeStart(timeStart);
 
   return (<div>
     <main>
@@ -62,10 +55,6 @@ const InProgress = () => {
 
       <div>
       <ReactStopwatch seconds={0} minutes={0} hours={0} limit="23:59:59"
-        // onChange={({ hours, minutes, seconds }) => {
-        //   // do something
-        // }}
-        // onCallback={() => console.log('Finish')}
         render={({ formatted }) => {
           return (
             <div className={styles.timeDisplay}>
@@ -77,8 +66,9 @@ const InProgress = () => {
       />
       </div>
 
-      <Link to="/reflection/reflection"> { /** TODO */}
-        <div className={styles.buttonGreen} onClick={() => enterTime(timeStart)}>
+      <Link to="/reflection/reflection">
+        <div className={styles.buttonGreen}
+            onClick={() => enterTimeEnd(Date.now())}>
           End Activity
         </div>
       </Link>
@@ -90,11 +80,17 @@ const InProgress = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    enterTimeSpent: (time) => dispatch(enterTimeSpent(time)),
+    // enterTimeSpent: (time) => dispatch(enterTimeSpent(time)),
     enterTimeStart: (time) => dispatch(enterTimeStart(time)),
     enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(InProgress);
+const mapStateToProps = (state) => {
+  return {
+    score: state.acts.score,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InProgress);
 

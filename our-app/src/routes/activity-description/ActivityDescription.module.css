@@ -7,23 +7,34 @@
     height: 100px;
     width: 100%;
     border-width: 3px;
-    top: 0%;
-    left: 0%;
+    /* top: 0%;
+    left: 0%; */
     position: fixed;
-    line-height: 100px;
+    /* line-height: 100px; */
 }
 
-.headerIcon .back-button{
+.backButton{
     flex-direction: row;
     width: 40px;
     height: 100%;
     vertical-align: middle;
-    float:left;
+    /* float:left; */
     padding-top: 30px;
     padding-inline: 20px;
 }
 
-.headerIcon .report-button {
+.reportButton {
+    /* padding-top: 30px; */
+    /* line-height: 140px; */
+    /* flex-direction: row; */
+    /* width: 40px; */
+    /* height: 100%; */
+    vertical-align: middle;
+    padding-inline: 20px;
+    float:right;
+}
+
+.homeButton {
     padding-top: 30px;
     line-height: 140px;
     flex-direction: row;
@@ -34,18 +45,7 @@
     float:right;
 }
 
-.headerIcon .home-button {
-    padding-top: 30px;
-    line-height: 140px;
-    flex-direction: row;
-    width: 40px;
-    height: 100%;
-    vertical-align: middle;
-    padding-inline: 20px;
-    float:right;
-}
-
-.headerIcon .help-button {
+.helpButton {
     padding-top: 30px;
     line-height: 140px;
     flex-direction: row;

@@ -16,29 +16,33 @@ const ActivityDescription = () => {
     return (
       <div>
         <main>
-          <div class="header d-flex flex-row justify-content-between align-items-center">
-            <img src="images/back.svg" alt="back icon"/>
-            <div class="d-flex flex-row justify-content-between align-items-center">
-                <img src="images/report.svg" class="me-3 icon" alt="report icon"/>
+          {/* <div class="header d-flex flex-row justify-content-between align-items-center"> */}
+            {/* <img src="images/back.svg" alt="back icon"/> */}
+            {/* <div class="d-flex flex-row justify-content-between align-items-center"> */}
+                {/* <img src="imagesreport.svg" className="me-3 icon" alt="report icon"/> */}
                 {/* <img src="images/home.svg" class="me-3 icon" alt="home icon"/> */}
-                <img src="images/question-mark.svg" class="me-3 icon" alt="question icon"/>
-            </div>
-          </div>
+                {/* <img src="images/question-mark.svg" className="me-3 icon" alt="question icon"/> */}
+            {/* </div> */}
+          {/* </div> */}
 
             <div className={styles.header}>
 
                 <div className={styles.headerIcon}>
                     <Link to="/"> {/* TODO: change */}
-                        <Back className="back-button" />
+                        {/* <div className={styles.backButton}> */}
+                        <Back color='white'/>
+                        {/* </div> */}
                     </Link>
                     <Link to="/"> {/* TODO: change */}
-                        <Report className="report-button" />
+                      <div className={styles.reportButton}>
+                      <Report/>
+                      </div>
                     </Link>
                     <Link to="/"> {/* TODO: change */}
                         {/* <Home className="home-button" /> */}
                     </Link>
                     <Link to="/"> {/* TODO: change */}
-                        <Help className={styles['help-button']} />
+                        <Help className={styles.helpButton} />
                     </Link>
                 </div>
             </div>

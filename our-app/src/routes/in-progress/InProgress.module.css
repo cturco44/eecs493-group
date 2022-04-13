@@ -3,7 +3,10 @@
 } */
 
 main{ /* TODO: delete?: this is a temp fix*/
-  display: block
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  flex-direction: row;
 }
 
 .selected {
@@ -23,28 +26,12 @@ main{ /* TODO: delete?: this is a temp fix*/
   left: 0;
 }
 
-#header-title {
+#headerTitle {
   font-weight: var(--fw-bold);
   font-size: 2rem
 }
 
-.help-button {
-  width: 20px;
-  height: 20px;
-  margin-right: 1em;
-}
-
-.back-button {
-  width: 3em;
-  height: 3em;
-}
-
-.icon-report {
-  width: 3em;
-  height: 3em;
-}
-
-div.button-green {
+div.buttonGreen {
   background-color: var(--clr-accent);
   display: flex;
   align-items: center;
@@ -55,20 +42,20 @@ div.button-green {
   font-weight: var(--fw-bold);
 }
 
-p.stopwatch-text {
+p.stopwatchText {
   color: var(--clr-accent);
   font-size: 3rem;
   font-weight: var(--fw-bold);
 }
 
-.time-display {
+.timeDisplay {
   padding: 4rem;
 }
 
-.act-popup {
+.actPopup {
 
 }
 
-.x-button {
-
+.xButton {
+  color: red;
 }

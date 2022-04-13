@@ -18,9 +18,43 @@ function ActivityButton(props) {
 }
 
 const SelectionPage = ({ selectCategory, selectTime, name }) => {
+  const [cat, setCat] = useState('');
   const [time, setTime] = useState('');
-  const [is_open, setOpenPopup] = useState(false);
-  const closePopup = () => setOpenPopup(false);
+  const [is_openHelp, setOpenPopupHelp] = useState(false);
+  const [is_openError, setOpenPopupError] = useState(false);
+  const closePopupHelp = () => setOpenPopupHelp(false);
+  const closePopupError = () => setOpenPopupError(false);
+
+  const returnNextButton = (time, cat) => {
+    if (time === '' || isNaN(time)) {
+      return <div>
+        <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button>
+        {returnErrorPopup("Invalid time: must enter a time that is a number before continuing.")}
+      </div>
+    } else if (cat !== 'social' && cat !== 'exercise' && cat !== 'mental') {
+      return <div>
+        <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button>
+        {returnErrorPopup("Invalid category: must select one of the three categories before continuing.")}
+      </div>
+    }
+    return (
+      <Link to="../activities-list/activities-list">
+          <button onClick={() => selectTime(time)}>find activities</button>
+      </Link>
+    );
+  }
+
+  const returnErrorPopup = (msg) => {
+    return (
+      <Popup open={is_openError} closeOnDocumentClick onClose={closePopupError}>
+        <div className={styles.popup}>
+          <a className={styles.xButton} onClick={closePopupError}> &times; </a>
+          <p className={styles['error-header']}>ERROR</p>
+          <p>{msg}</p>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <div>
@@ -30,10 +64,10 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
         </Link>
 
         <Help className={styles['help-button']}
-              onClick={() => setOpenPopup(is_open => !is_open)}/>
-        <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
-          <div className={styles['help-popup']}>
-            <a className={styles.xButton} onClick={closePopup}> &times; </a>
+              onClick={() => setOpenPopupHelp(is_openHelp => !is_openHelp)}/>
+        <Popup open={is_openHelp} closeOnDocumentClick onClose={closePopupHelp}>
+          <div className={styles.popup}>
+            <a className={styles.xButton} onClick={closePopupHelp}> &times; </a>
             <div className={styles['help-header']}>
               HELP
             </div>
@@ -63,7 +97,7 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
       </div>
 
       <div className={styles.minQ}>
-        <p> First, how many minutes want to be outside for? </p>
+        <p> First, how many minutes do you want to be outside for? </p>
       </div>
 
       <form>
@@ -86,28 +120,33 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
 
       <div className={styles.actionButts}>
         <div className={styles.button_w_text}>
-          <button onClick={() => selectCategory('social')}>Social</button>
+          <button onClick={() => {
+              setCat('social');
+              selectCategory('social');
+              }}>
+              Social</button>
           <span className={styles.Caption}>Social</span>
         </div>
 
         <div className={styles.button_w_text}>
-          <button onClick={() => selectCategory('exercise')}>Exercise</button>
+        <button onClick={() => {
+              setCat('exercise');
+              selectCategory('exercise');
+              }}>
+              Exercise</button>
           <span className={styles.Caption}>Exercise</span>
         </div>
 
         <div className={styles.button_w_text}>
-          <button onClick={() => selectCategory('mental')}>Mental</button>
+        <button onClick={() => {
+              setCat('mental');
+              selectCategory('mental');
+              }}>
+              Mental</button>
           <span className={styles.Caption}>Mental</span>
         </div>
-
-        {/* <ActivityButton ActivityButt="Social" className = 'Social' />
-
-          <ActivityButton ActivityButt="Exercise" className = 'Exercise' onClick={() => selectCategory('exercise')}/>
-          <ActivityButton ActivityButt="Mental" className = 'Mental' onClick={() => selectCategory('mental')}/> */}
       </div>
-      <Link to="../activities-list/activities-list">
-        <button onClick={() => selectTime(time)}>find activities</button>
-      </Link>
+      {returnNextButton(time, cat)}
 
       <div className="bottBuff"></div>
     </div>

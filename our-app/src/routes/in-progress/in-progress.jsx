@@ -4,15 +4,11 @@ import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import { enterTimeStart, enterTimeEnd } from '../../redux/Acts/actsActions';
+import { enterTimeStart, enterTimeEnd, changeScore } from '../../redux/Acts/actsActions';
 import { getActInfo } from '../activity-description/data';
 import styles from './InProgress.module.css';
-import { ReactComponent as Report } from './../../images/icon-report.svg';
-import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
-import { ReactComponent as Help } from './../../images/help-button.svg';
 
-
-const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
+const InProgress = ({ score, enterTimeEnd, enterTimeStart, changeScore }) => {
   let params = useParams();
   let activityID = parseInt(params.actId, 10);
   let activity = getActInfo()[activityID];
@@ -22,15 +18,16 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
 
   let timeStart = Date.now();
   enterTimeStart(timeStart);
+  console.log(activity.points, activity);
 
   return (<div>
     <main>
       <header>
-        <Link className={styles.back} to="../selection-page/selection-page">
-          <Back className={styles['back-button']} />
-        </Link>
-        <div className={styles.score}>Score: {score}</div>
-        <Report className={styles['icon-report']} />
+        {/* <Link className={styles.back} to="../selection-page/selection-page"> */}
+          {/* <Back className={styles['back-button']} /> */}
+        {/* </Link> */}
+        <div className={styles.score}>Score: {score + activity.points}</div>
+        {/* <Report className={styles['icon-report']} /> */}
       </header>
 
       <div className={styles.inProgress}>
@@ -90,7 +87,10 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
 
       <Link to="/reflection/reflection">
         <div className={styles.buttonGreen}
-            onClick={() => enterTimeEnd(Date.now())}>
+            onClick={() => {
+              changeScore(score + activity.points);
+              enterTimeEnd(Date.now());
+              }}>
           End Activity
         </div>
       </Link>
@@ -101,6 +101,7 @@ const InProgress = ({ enterTimeEnd, enterTimeStart, score }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    changeScore: (score) => dispatch(changeScore(score)),
     enterTimeStart: (time) => dispatch(enterTimeStart(time)),
     enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
   };

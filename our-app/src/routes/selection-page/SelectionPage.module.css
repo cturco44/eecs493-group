@@ -118,7 +118,7 @@ div.button_w_text {
   left: 1rem;
 }
 
-.help-popup {
+.popup {
   /* background-color: #E5E9EC; */
   position: relative;
 }
@@ -149,6 +149,19 @@ div.button_w_text {
 .help-question-answer {
   font-size: 16px;
   margin-top: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  overflow-wrap: normal;
+}
+
+.error-header {
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.error-content {
+  font-size: 18px;
   margin-left: 5%;
   margin-right: 5%;
   overflow-wrap: normal;

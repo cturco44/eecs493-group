@@ -14,6 +14,7 @@ import {
   enterPreExcitement,
   enterPreHappiness,
   enterPreNote,
+  enterTimeStart,
 } from '../../redux/Acts/actsActions';
 
 const Mindfulness = ({
@@ -21,6 +22,7 @@ const Mindfulness = ({
   enterPreExcitement,
   enterPreHappiness,
   enterPreNote,
+  enterTimeStart,
 }) => {
   const [energy, setEnergy] = useState(0);
   const [happiness, setHappiness] = useState(0);
@@ -223,6 +225,7 @@ const Mindfulness = ({
     console.log('preHappiness: ' + happiness);
     console.log('preExcitement: ' + excitement);
     console.log('preNotes: ' + notes);
+    enterTimeStart(Date.now());
   };
 
   return (
@@ -305,6 +308,7 @@ const mapDispatchToProps = (dispatch) => {
     enterPreEnergy: (rate) => dispatch(enterPreEnergy(rate)),
     enterPreHappiness: (rate) => dispatch(enterPreHappiness(rate)),
     enterPreExcitement: (rate) => dispatch(enterPreExcitement(rate)),
+    enterTimeStart: (time) => dispatch(enterTimeStart(time)),
   };
 };
 

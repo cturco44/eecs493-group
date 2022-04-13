@@ -41,6 +41,10 @@ div.buttonGreen {
   font-weight: var(--fw-bold);
 }
 
+.buttonGreen:hover {
+  cursor: pointer;
+}
+
 p.stopwatchText {
   color: var(--clr-accent);
   font-size: 3rem;
@@ -51,7 +55,7 @@ p.stopwatchText {
   padding: 4rem;
 }
 
-.actPopup {
+.popup {
 
 }
 
@@ -82,3 +86,29 @@ h1 {
   background-color: grey;
   opacity: 20%;
 }
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid red;
+}
+
+.header {
+  flex: 1;
+}
+
+.wrapper {
+  flex: 6;
+}
+
+.selected {
+  margin: 2em 0;
+}
+
+#headerTitle {
+  margin: 1em 0;
+}
+

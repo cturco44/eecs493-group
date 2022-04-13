@@ -20,7 +20,7 @@ const LandingPage = ({ enterName }) => {
   const closePopupError = () => setOpenPopupError(false);
 
   const getNextButton = (name) => {
-    if (isValidName(name) && name !== "") {
+    if (isValidName(name.toLowerCase()) && name !== "") {
       return (
         <Link to="../selection-page/selection-page">
           <input

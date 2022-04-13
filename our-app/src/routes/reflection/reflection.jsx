@@ -230,10 +230,7 @@ const Reflection = ({
     <div>
       <main>
               <div className={styles.header}>
-                <div>
-                    <Link to={`/in-progress/in-progress/${activityID}`}> 
-                        <Back className={styles.backButton} />
-                    </Link>                   
+                <div>           
                     {/*<Link to="/"> 
                         <Help className={styles.helpButton} />
                     </Link>*/}

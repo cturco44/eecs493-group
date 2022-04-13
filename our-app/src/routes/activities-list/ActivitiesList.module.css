@@ -80,6 +80,10 @@ header {
   margin-right: 1em;
 }
 
+.help-button:hover {
+  cursor: pointer;
+}
+
 .back-button {
   width: 3em;
   height: 3em;

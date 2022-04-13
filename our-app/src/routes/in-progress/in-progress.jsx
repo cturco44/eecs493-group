@@ -85,7 +85,7 @@ const InProgress = () => {
       />
       </div>
 
-      <Link to="/"> { /** TODO */}
+      <Link to="/reflection/reflection"> { /** TODO */}
         <div className="button-green" onClick={() => console.log('"end activity" button pressed!')}>
           End Activity
         </div>

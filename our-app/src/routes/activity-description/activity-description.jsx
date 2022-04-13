@@ -8,9 +8,7 @@ import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
 import {useParams} from 'react-router-dom'
 
-const ActivityDescription = ({actID}) => {
-    // let allActs = getActs();
-    // let activity = allActs.filter((allActs) => allActs.name === actName);
+const ActivityDescription = () => {
     let params = useParams();
     let allActs = getActInfo();
     let activityId = parseInt(params.actId, 10)
@@ -68,7 +66,7 @@ const ActivityDescription = ({actID}) => {
         </section>
 
         <section className={styles.nextButton}>
-          <Link to={`../mindfulness/mindfulness/${activityId}`}>
+          <Link to={`../mindfulness/mindfulness/${activityId}`}> {/* Add (w/o quotes): "/${activityId}`" */}
             <div className={styles.nextButt}> Next </div>
           </Link>
         </section>
@@ -78,8 +76,7 @@ const ActivityDescription = ({actID}) => {
 };
 
 const mapStateToProps = () => {
-  return {
-  };
+  return {};
 };
 
 export default connect(mapStateToProps)(ActivityDescription);

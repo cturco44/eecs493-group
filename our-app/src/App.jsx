@@ -12,7 +12,7 @@ import ActivityDescription from './routes/activity-description/activity-descript
 import InProgress from './routes/in-progress/in-progress';
 import Mindfulness from './routes/mindfulness/mindfulness';
 import Reflection from './routes/reflection/reflection';
-// import Reflection from './routes/reflection/reflection';
+
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
           <Route path="/activity-description/activity-description/:actId" element={<ActivityDescription />} />
           {/* <Route path="/help-activities-list/help-activities-list" element={<HelpActivitiesList />} />
           <Route path="/help-start/help-start" element={<HelpStart />} /> */}
-          <Route path="/in-progress/in-progress" element={<InProgress />} />
-          <Route path="/mindfulness/mindfulness" element={<Mindfulness />} />
+          <Route path="/in-progress/in-progress/:actId" element={<InProgress />} />
+          <Route path="/mindfulness/mindfulness/:actId" element={<Mindfulness />} />
           <Route path="/reflection/reflection" element={<Reflection />} />
         </Routes>
       </BrowserRouter>

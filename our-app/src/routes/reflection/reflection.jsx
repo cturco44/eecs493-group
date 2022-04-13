@@ -1,116 +1,102 @@
 import { Link } from 'react-router-dom';
-import { getActs } from '../data';
 import { useState } from 'react';
-import { ReactComponent as Report } from './../images/icon-report.svg';
-import { ReactComponent as Back } from './../images/back-arrow-to-first-track-svgrepo-com 1.svg';
-import { ReactComponent as Home } from './../images/home-button.svg';
-import { ReactComponent as Help } from './../images/help-button.svg';
-import { ReactComponent as blackStar } from './../images/star-black.svg';
-import { ReactComponent as goldStar } from './../images/star-gold.svg';
+import { ReactComponent as Report } from './../../images/icon-report.svg';
+import { ReactComponent as Back } from './../../images/back-arrow-to-first-track-svgrepo-com 1.svg';
+import { ReactComponent as Home } from './../../images/home-button.svg';
+import { ReactComponent as Help } from './../../images/help-button.svg';
+import { ReactComponent as Blackstar } from './../../images/star-black.svg';
+import { ReactComponent as Goldstar } from './../../images/star-gold.svg';
 import { connect } from 'react-redux';
 import './reflection.css';
+import {useParams} from 'react-router-dom'
+
 
 const Reflection = () => {
     let energy = 0;
-    let happyness = 0;
+    let happiness = 0;
     let excitement = 0;
     const [notes, setNotes] = useState("");
 
-    let energyListInit = [
-        <blackStar key="1" onClick={() => {handleEnergyClick(1)}} className="stars"></blackStar>,
-        <goldStar key="2" onClick={() => {handleEnergyClick(1)}} className="goldStars"></goldStar>,
-        <blackStar key="3" onClick={() => {handleEnergyClick(2)}} className="stars"></blackStar>,
-        <goldStar key="4" onClick={() => {handleEnergyClick(2)}} className="goldStars"></goldStar>,
-        <blackStar key="5" onClick={() => {handleEnergyClick(3)}} className="stars"></blackStar>,
-        <goldStar key="6" onClick={() => {handleEnergyClick(3)}} className="goldStars"></goldStar>,
-        <blackStar key="7" onClick={() => {handleEnergyClick(4)}} className="stars"></blackStar>,
-        <goldStar key="8" onClick={() => {handleEnergyClick(4)}} className="goldStars"></goldStar>,
-        <blackStar key="9" onClick={() => {handleEnergyClick(5)}} className="stars"></blackStar>,
-        <goldStar key="10" onClick={() => {handleEnergyClick(5)}} className="goldStars"></goldStar>
-    ]
+    let params = useParams();
+    let activityID = parseInt(params.actId, 10);
 
-    const [energyList, setEnergyList] = useState(energyListInit);
+    const [energyList, setEnergyList] = useState([
+        <Blackstar onClick={() => {handleEnergyClick(1)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleEnergyClick(2)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleEnergyClick(3)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleEnergyClick(4)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleEnergyClick(5)}} className="stars"></Blackstar>,
+    ]);
 
-    handleEnergyClick = (level) => {
+    const handleEnergyClick = (level) => {
         energy = level;
-        let temp = energyList;
-        for(let i = 0; i < temp.length()/2; i++){
-            temp[i].style.display = "inline-block";
-            i++;
-            temp[i].style.display = "none";
-        }
+        console.log('Energy Level: ' + energy);
+        let temp = [];
+        let j = 0;
         for(let i = 0; i < level; i++){
-            temp[i].style.display = "none";
-            i++;
-            temp[i].style.display = "inline-block";
+            temp.push(<Goldstar onClick={() => {handleEnergyClick(i+1)}} className="stars"></Goldstar>);
+            j++;
+        }
+        for(let i = j; i < 5; i++){
+            temp.push(<Blackstar  onClick={() => {handleEnergyClick(i+1)}} className="stars"></Blackstar>);
         }
         setEnergyList(temp);
-        console.log('Energy Level: ' + energy);
     }
 
-    let happynessListInit = [
-        <blackStar key="1" onClick={() => {handleHappynessClick(1)}} className="stars"></blackStar>,
-        <goldStar key="2" onClick={() => {handleHappynessClick(1)}} className="goldStars"></goldStar>,
-        <blackStar key="3" onClick={() => {handleHappynessClick(2)}} className="stars"></blackStar>,
-        <goldStar key="4" onClick={() => {handleHappynessClick(2)}} className="goldStars"></goldStar>,
-        <blackStar key="5" onClick={() => {handleHappynessClick(3)}} className="stars"></blackStar>,
-        <goldStar key="6" onClick={() => {handleHappynessClick(3)}} className="goldStars"></goldStar>,
-        <blackStar key="7" onClick={() => {handleHappynessClick(4)}} className="stars"></blackStar>,
-        <goldStar key="8" onClick={() => {handleHappynessClick(4)}} className="goldStars"></goldStar>,
-        <blackStar key="9" onClick={() => {handleHappynessClick(5)}} className="stars"></blackStar>,
-        <goldStar key="10" onClick={() => {handleHappynessClick(5)}} className="goldStars"></goldStar>
-    ]
+    const [happinessList, setHappinessList] = useState([
+        <Blackstar onClick={() => {handleHappinessClick(1)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleHappinessClick(2)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleHappinessClick(3)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleHappinessClick(4)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleHappinessClick(5)}} className="stars"></Blackstar>,
+    ]);
 
-    const [happynessList, setHappynessList] = useState(happynessListInit);
-
-    handleHappynessClick = (level) => {
-        happyness = level;
-        let temp = happynessList;
-        for(let i = 0; i < temp.length()/2; i++){
-            temp[i].style.display = "inline-block";
-            i++;
-            temp[i].style.display = "none";
-        }
+    const handleHappinessClick = (level) => {
+        happiness = level;
+        console.log('Happiness Level: ' + happiness);
+        let temp = [];
+        let j = 0;
         for(let i = 0; i < level; i++){
-            temp[i].style.display = "none";
-            i++;
-            temp[i].style.display = "inline-block";
+            temp.push(<Goldstar onClick={() => {handleHappinessClick(i+1)}} className="stars"></Goldstar>);
+            j++;
         }
-        setHappynessList(temp);
-        console.log('Happyness Level: ' + happyness);
+        for(let i = j; i < 5; i++){
+            temp.push(<Blackstar  onClick={() => {handleHappinessClick(i+1)}} className="stars"></Blackstar>);
+        }
+        setHappinessList(temp);
     }
 
-    let excitementListInit = [
-        <blackStar key="1" onClick={() => {handleExcitementClick(1)}} className="stars"></blackStar>,
-        <goldStar key="2" onClick={() => {handleExcitementClick(1)}} className="goldStars"></goldStar>,
-        <blackStar key="3" onClick={() => {handleExcitementClick(2)}} className="stars"></blackStar>,
-        <goldStar key="4" onClick={() => {handleExcitementClick(2)}} className="goldStars"></goldStar>,
-        <blackStar key="5" onClick={() => {handleExcitementClick(3)}} className="stars"></blackStar>,
-        <goldStar key="6" onClick={() => {handleExcitementClick(3)}} className="goldStars"></goldStar>,
-        <blackStar key="7" onClick={() => {handleExcitementClick(4)}} className="stars"></blackStar>,
-        <goldStar key="8" onClick={() => {handleExcitementClick(4)}} className="goldStars"></goldStar>,
-        <blackStar key="9" onClick={() => {handleExcitementClick(5)}} className="stars"></blackStar>,
-        <goldStar key="10" onClick={() => {handleExcitementClick(5)}} className="goldStars"></goldStar>
-    ]
+    const [excitementList, setExcitementList] = useState([
+        <Blackstar onClick={() => {handleExcitementClick(1)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleExcitementClick(2)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleExcitementClick(3)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleExcitementClick(4)}} className="stars"></Blackstar>,
+        <Blackstar onClick={() => {handleExcitementClick(5)}} className="stars"></Blackstar>,
+    ]);
 
-    const [excitementList, setExcitementList] = useState(excitementListInit);
-
-    handleExcitementClick = (level) => {
+    const handleExcitementClick = (level) => {
         excitement = level;
-        let temp = excitementList;
-        for(let i = 0; i < temp.length()/2; i++){
-            temp[i].style.display = "inline-block";
-            i++;
-            temp[i].style.display = "none";
-        }
+        console.log('Excitement Level: ' + excitement);
+        let temp = [];
+        let j = 0;
         for(let i = 0; i < level; i++){
-            temp[i].style.display = "none";
-            i++;
-            temp[i].style.display = "inline-block";
+            temp.push(<Goldstar onClick={() => {handleExcitementClick(i+1)}} className="stars"></Goldstar>);
+            j++;
+        }
+        for(let i = j; i < 5; i++){
+            temp.push(<Blackstar  onClick={() => {handleExcitementClick(i+1)}} className="stars"></Blackstar>);
         }
         setExcitementList(temp);
-        console.log('excitement Level: ' + excitement);
     }
+
+    const handleButtonClick = () => {
+        console.log('"begin activity" button pressed!')
+        console.log("postEnergy: " + energy);
+        console.log("postHappiness: " + happiness);
+        console.log("postExcitement: " + excitement);
+        console.log("postNotes: " + notes);
+    }
+
     return (
       <div>
         <main>
@@ -139,7 +125,7 @@ const Reflection = () => {
 
         <div className="InfoContainer">
             <div className="description">
-                <h3>What would you rate your current engergy level?</h3>
+                <h3>What would you rate your current energy level?</h3>
                 <div className="starsContainer">
                     {energyList}
                 </div>
@@ -148,25 +134,28 @@ const Reflection = () => {
             <div className="description">
                 <h3>How happy are you currently feeling?</h3>
                 <div className="starsContainer">
-                    {happynessList}
+                    {happinessList}
                 </div>
             </div>
 
             <div className="description">
-                <h3>How much did you enjoy this session?</h3>
+                <h3> How much did you enjoy this session?</h3>
                 <div className="starsContainer">
-                    {excitmentList}
+                    {excitementList}
                 </div>
             </div>
         </div>
 
         <div className="textContainer">
-            <textarea value={notes} onInput={e => setNotes(e.target.value)} className="textBox" type="text" placeholder="Notes..."></textarea>
-        </div>
+            <textarea value={notes} id="userInput" onInput={e => setNotes(e.target.value)} className="textBox" type="text" placeholder="Notes..."></textarea>
 
-        <div className="buttonContainer">
-            <button onClick={() => console.log('"submit" button pressed!')} className="beginButton" type="button">Submit</button>
         </div>
+        
+        <Link to={"/"}> {/* TODO: change */}
+            <div className="buttonContainer">
+                    <button onClick={() => handleButtonClick()} className="beginButton" type="button">Finish Activity</button>
+            </div>
+        </Link>
         </main>
       </div>
     );
@@ -174,11 +163,22 @@ const Reflection = () => {
 
   const mapStateToProps = (state) => {
     return {
-      energy: state.energy,
-      happyness: state.happyness,
-      excitement: state.excitment,
-      notes: state.notes
+      postEnergy: state.energy,
+      postHappiness: state.happiness,
+      postExcitement: state.excitment,
+      postNotes: state.notes
     };
   };
 
-  export default connect(mapStateToProps)(mindfulness);
+
+  export default connect(mapStateToProps)(Reflection);
+
+
+
+
+
+  
+  
+  
+  
+ 

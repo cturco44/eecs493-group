@@ -1,117 +1,189 @@
 // import { ReactComponent as Report } from './../../images/icon-report.svg';
-import { React, useState } from 'react'
-import ReactStopwatch from 'react-stopwatch';
+import { React, useState, useEffect } from 'react';
+// import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import { enterTimeStart, enterTimeEnd, changeScore } from '../../redux/Acts/actsActions';
+import {
+  enterTimeSpent,
+  changeScore,
+} from '../../redux/Acts/actsActions';
 import { getActInfo } from '../activity-description/data';
 import styles from './InProgress.module.css';
+// import StopWatch from './StopWatch';
+// import Timer from './Timer';
+import ControlButtons from './ControlButtons';
 
-const InProgress = ({ score, enterTimeEnd, enterTimeStart, changeScore }) => {
+const InProgress = ({ score, changeScore, enterTimeSpent }) => {
   let params = useParams();
   let activityID = parseInt(params.actId, 10);
   let activity = getActInfo()[activityID];
 
   const [is_open, setOpenPopup] = useState(false);
   const closePopup = () => setOpenPopup(false);
+  const [is_openConfirm, setOpenConfirm] = useState(false);
+  const closePopupConfirm = () => setOpenConfirm(false);
 
-  let timeStart = Date.now();
-  enterTimeStart(timeStart);
-  console.log(activity.points, activity);
+  const [isActive, setIsActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
+  const [time, setTime] = useState(0);
 
-  return (<div>
-    <main>
-      <header>
-        {/* <Link className={styles.back} to="../selection-page/selection-page"> */}
-          {/* <Back className={styles['back-button']} /> */}
-        {/* </Link> */}
-        <div className={styles.score}>Score: {score + activity.points}</div>
-        {/* <Report className={styles['icon-report']} /> */}
-      </header>
+  useEffect(() => {
+    let interval = null;
 
-      <div className={styles.inProgress}>
-        <h1 className={styles.selected}>
-          <p id={styles.headerTitle}>{activity.name}</p>
-          <p>In Progress</p>
-        </h1>
+    if (isActive && isPaused === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive, isPaused]);
 
-        <div>
-          <div className={styles.buttonGreen} onClick={() => setOpenPopup(is_open => !is_open)}>
-            Activity Description
+  const handleStart = () => {
+    setIsActive(true);
+    setIsPaused(false);
+  };
+
+  const handlePauseResume = () => {
+    setIsPaused(!isPaused);
+  };
+
+  const newlineText = (text) => {
+    const newText = text.split('\n').map(str => <p style={{textAlign: 'left', paddingBottom: '15px', paddingLeft: '20px'}} >{str}</p>);
+    return newText;
+  }
+
+  return (
+    <div>
+      <main className={styles.main}>
+        <header className={styles.header}>
+          <div className={styles.score}>Score: {score + activity.points}</div>
+        </header>
+
+        <div className={styles.wrapper}>
+          <div className={styles.inProgress}>
+            <p className={styles.selected}>
+              <p id={styles.headerTitle}>{activity.name}</p>
+              In Progress
+            </p>
+
+            <div
+              className={styles.buttonGreen}
+              onClick={() => {
+                setOpenPopup((is_open) => !is_open);
+              }}
+            >
+              Activity Description
+            </div>
+            <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
+              <div className={styles.popup}>
+                <a className={styles.xButton} onClick={closePopup}>
+                  &times;
+                </a>
+                <div className={styles['popup']}>
+                  <section>
+                    <p className={styles['popup-header']}>{activity.name}</p>
+                  </section>
+
+                  <section className={styles['popup-content']}>
+                    <div className={styles['popup-content-section']}>
+                      <p className={styles['popup-header']}>Description:</p>
+                      <p> {newlineText(activity.description)} </p>
+                    </div>
+
+                    <div className={styles['popup-content-section']}>
+                      <p className={styles['popup-header']}>Instructions:</p>
+                      <p> {newlineText(activity.instruction)} </p>
+                    </div>
+
+                    <div className={styles['popup-content-section']}>
+                      <p className={styles['popup-header']}>Tips:</p>
+                      <p> {newlineText(activity.tips)} </p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </Popup>
           </div>
-          <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
+
+          <div className={styles['stop-watch']}>
+            {/* <Timer time={time} className={styles.timeDisplay}/> */}
+            {/* <div className="timer"> */}
+            <div className={styles['time-display']}>
+              <span className="digits">
+                {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
+              </span>
+              <span className="digits">
+                {('0' + Math.floor((time / 1000) % 60)).slice(-2)}.
+              </span>
+              <span className="digits mili-sec">
+                {('0' + ((time / 10) % 100)).slice(-2)}
+              </span>
+            </div>
+            <div className={styles['start-pause-button']}>
+              <ControlButtons
+                active={isActive}
+                isPaused={isPaused}
+                handleStart={handleStart}
+                handlePauseResume={handlePauseResume}
+              />
+            </div>
+          </div>
+
+          <div
+            className={styles.buttonGreen}
+            onClick={() => {
+              setOpenConfirm((is_openConfirm) => !is_openConfirm);
+            }}
+          >
+            End Activity
+          </div>
+          <Popup
+            open={is_openConfirm}
+            closeOnDocumentClick
+            onClose={closePopupConfirm}
+          >
             <div className={styles.actPopup}>
-              <a className={styles.xButton} onClick={closePopup}> &times; </a>
-              <div>
-                <section>
-                  <h1> {activity.name} </h1>
-                  <hr className={styles.lineBreak}/>
-                </section>
-
-                <section className={styles['popup-content']}>
-                  <div className={styles['popup-content-section']}>
-                    <h1>Description:</h1>
-                    <p> {activity.description} </p>
-                  </div>
-
-                  <div className={styles['popup-content-section']}>
-                    <h1>Instructions:</h1>
-                    <p> {activity.instruction} </p>
-                  </div>
-
-                  <div className={styles['popup-content-section']}>
-                    <h1>Tips:</h1>
-                    <p> {activity.tips} </p>
-                  </div>
-                </section>
+              <p>Are you sure you want to end the activity?</p>
+              <div className={styles['confirm-buttons']}>
+                <button onClick={closePopupConfirm}> No </button>
+                <Link to={`/reflection/reflection/${activityID}`}>
+                  <button
+                    onClick={() => {
+                      changeScore(score + activity.points);
+                      enterTimeSpent(time);
+                    }}
+                  >
+                    Yes
+                  </button>
+                </Link>
               </div>
             </div>
           </Popup>
         </div>
-
-      </div>
-
-      <div>
-      <ReactStopwatch seconds={0} minutes={0} hours={0} limit="23:59:59"
-        render={({ formatted }) => {
-          return (
-            <div className={styles.timeDisplay}>
-              <p>Time Elapsed:</p>
-              <p className={styles.stopwatchText}>{ formatted }</p>
-            </div>
-          );
-        }}
-      />
-      </div>
-
-      <Link to={`/reflection/reflection/${activityID}`}>
-        <div className={styles.buttonGreen}
-            onClick={() => {
-              changeScore(score + activity.points);
-              enterTimeEnd(Date.now());
-              }}>
-          End Activity
-        </div>
-      </Link>
-
-    </main>
-  </div>);
-}
+      </main>
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeScore: (score) => dispatch(changeScore(score)),
-    enterTimeStart: (time) => dispatch(enterTimeStart(time)),
-    enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
+    // enterTimeStart: (time) => dispatch(enterTimeStart(time)),
+    // enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
+    enterTimeSpent: (time) => dispatch(enterTimeSpent(time)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     score: state.acts.score,
+    timeStart: state.acts.timeStart,
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InProgress);
-

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { React, useState } from 'react';
 import { connect } from 'react-redux';
 import { ReactComponent as Home } from './../../images/home.svg';
@@ -9,13 +9,23 @@ import excercise from './../../images/excercise.svg';
 import mental from './../../images/mental.svg';
 import social from './../../images/social.svg';
 import Popup from 'reactjs-popup';
+import {getActInfo} from './../activity-description/data'
 
 import styles from './Dashboard.module.css';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, postEnergy, preHappiness, postHappiness, preExcitement, postExcitement}) => {
+const Dashboard = ({name, score, timeSpent, category, preActNote, postActNote, preEnergy, postEnergy, preHappiness, postHappiness, preExcitement, postExcitement}) => {
+    let params = useParams();
+    let activityID = parseInt(params.actId, 10);
+   
+    let act = getActInfo()[activityID]["name"];
+
+        
+    
+    console.log("activityId for dashboard = " + String(activityID));
+
     const [popupOpen, setPopupOpen] = useState(false);
     const closePopupError = () => setPopupOpen(false);
     const image_source = {
@@ -28,9 +38,9 @@ const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, p
     const numToPage = {
         1: '/selection-page/selection-page',
         2: '/activities-list/activities-list',
-        3: `/activity-description/activity-description/${0}`,
-        4: `/mindfulness/mindfulness/${0}`,
-        5: `/reflection/reflection/${0}`
+        3: `/activity-description/activity-description/${activityID}`,
+        4: `/mindfulness/mindfulness/${activityID}`,
+        5: `/reflection/reflection/${activityID}`
     }
     
     return (
@@ -56,7 +66,7 @@ const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, p
             </div>
         </div>
         <div className={[styles.top, 'mt-3'].join(' ')}>
-        <h1 className="text-center">Way to Go, {name}!</h1>
+        <h1 className={[styles.h1, 'text-center'].join(' ')}>Way to Go, {name}!</h1>
         <h3 className="text-center mb-5">Look at all that progress!</h3>
         <div className="d-flex flex-row flex-wrap justify-content-center">
             <div className={[styles.card, "me-4"].join(' ')}>
@@ -69,7 +79,7 @@ const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, p
                 <h3>Total Points Earned</h3>
             </div>
             <div className={[styles.card, "me-4"].join(' ')}>
-                <h3 className={['text-center', styles['big-card-text-2']].join(' ')}>50</h3>
+                <h3 className={['text-center', styles['big-card-text-2']].join(' ')}>{Math.floor(timeSpent/6000)}</h3>
                 <h3 className="text-center">Total Minutes</h3>
             </div>
         </div>
@@ -81,10 +91,10 @@ const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, p
             <h2>Activity History</h2>
         </div>
         <div className={styles['big-card']}>
-                <h4>WALKING</h4>
+                <h4>{act}</h4>
                 <div className="d-flex justify-content-center align-items-start flex-wrap">
                     <div className="d-flex flex-column align-items-center me-4">
-                        <div className={[styles.number, styles.black].join(' ')}>40</div>
+                        <div className={[styles.number, styles.black].join(' ')}>{Math.floor(timeSpent/6000)}</div>
                         <div className={[styles['under-number'], styles.black].join(' ')}>Minutes</div>
                     </div>
                     <div className={[styles.v1, 'me-4'].join(' ')}></div>
@@ -146,6 +156,7 @@ const mapStateToProps = (state) => {
     return {
       name: state.acts.name,
       score: state.acts.score,
+      timeSpent: state.acts.timeSpent,
       category: state.acts.category,
       preActNote: state.acts.preActNote,
       postActNote: state.acts.postActNote,

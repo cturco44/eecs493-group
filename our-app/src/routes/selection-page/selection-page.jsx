@@ -53,51 +53,64 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
         </Link>
       </div>
     );
-  }
+  };
 
   const returnErrorPopup = (msg) => {
     return (
       <Popup open={is_openError} closeOnDocumentClick onClose={closePopupError}>
         <div className={styles.popup}>
-          <a className={styles.xButton} onClick={closePopupError}> &times; </a>
+          <a className={styles.xButton} onClick={closePopupError}>
+            &times;
+          </a>
           <p className={styles['error-header']}>ERROR</p>
           <p>{msg}</p>
         </div>
       </Popup>
     );
-  }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.topBuff}>
-        <Link to="../dashboard/dashboard"> {/** TODO: Reroute to report page */}
+        {/* <Link to="../dashboard/dashboard/0"> 
           <Report className={[styles['report-button'], 'mt-5'].join(' ')}/>
-        </Link>
+        </Link> */}
 
-        <Help className={styles['help-button']}
-              onClick={() => setOpenPopupHelp(is_openHelp => !is_openHelp)}/>
+        <Help
+          className={styles['help-button']}
+          onClick={() => setOpenPopupHelp((is_openHelp) => !is_openHelp)}
+        />
         <Popup open={is_openHelp} closeOnDocumentClick onClose={closePopupHelp}>
           <div className={styles.popup}>
-            <a className={styles.xButton} onClick={closePopupHelp}> &times; </a>
-            <div className={styles['help-header']}>
-              HELP
-            </div>
+            <a className={styles.xButton} onClick={closePopupHelp}>
+              &times;
+            </a>
+            <div className={styles['help-header']}>HELP</div>
             <section className={styles['help-question-answer']}>
-              <div className={styles['help-question']}>What is APP_NAME?</div>
-              <p>APP_NAME is a program aimed at getting people outside. That’s it.
-                It gives its users complete flexibility of choice in time and
-                location, then suggests a couple of fun activities to do outside,
-                from taking a walk with a friend to a outdoor photography
-                scavenger hunt.
+              <div className={styles['help-question']}>What is Take it Outside?</div>
+              <p>
+                Take it Outside! is a program aimed at getting people outside. That’s
+                it. It gives its users complete flexibility of choice in time
+                and location, then suggests a couple of fun activities to do
+                outside, from taking a walk with a friend to a outdoor
+                photography scavenger hunt.
               </p>
             </section>
             <section className={styles['help-question-answer']}>
               <div className={styles['help-question']}>About categories</div>
-              <p>APP_NAME suggests a variety of outdoor activities that can
-                roughly be sorted into 3 categories.</p>
+              <p>
+                Take it Outside! suggests a variety of outdoor activities that can
+                roughly be sorted into 3 categories.
+              </p>
               <p>Social: activities with any social aspect.</p>
-              <p>Exercise: activities that focus on more physically intense activities outdoors.</p>
-              <p>Mental: activities that help you destress or give you a change of pace.</p>
+              <p>
+                Exercise: activities that focus on more physically intense
+                activities outdoors.
+              </p>
+              <p>
+                Mental: activities that help you destress or give you a change
+                of pace.
+              </p>
             </section>
           </div>
         </Popup>

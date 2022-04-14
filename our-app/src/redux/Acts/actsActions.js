@@ -111,18 +111,9 @@ export const enterPostExcitement = (rate) => {
   };
 };
 
-export const enterTimeStart = (time) => {
+export const enterTimeSpent = (time) => {
   return {
-    type: actionTypes.TIME_START,
-    payload: {
-      id: time,
-    },
-  };
-};
-
-export const enterTimeEnd = (time) => {
-  return {
-    type: actionTypes.TIME_END,
+    type: actionTypes.TIME_SPENT,
     payload: {
       id: time,
     },

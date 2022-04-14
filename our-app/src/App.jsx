@@ -20,10 +20,10 @@ function App() {
           <Route path="/selection-page/selection-page" element={<SelectionPage />} />
           <Route path="/activities-list/activities-list" element={<ActivitiesList />} />
           <Route path="/activity-description/activity-description/:actId" element={<ActivityDescription />} />
-          <Route path="/in-progress/in-progress/:actId" element={<InProgress />} />
-          <Route path="/mindfulness/mindfulness/:actId" element={<Mindfulness />} />
-          <Route path="/reflection/reflection" element={<Reflection />} />
-          <Route path="/dashboard/dashboard" element={<Dashboard />}/>
+          <Route path="/in-progress/in-progress/:actId/" element={<InProgress />} />
+          <Route path="/mindfulness/mindfulness/:actId/" element={<Mindfulness />} />
+          <Route path="/reflection/reflection/:actId" element={<Reflection />} />
+          <Route path="/dashboard/dashboard/:actId" element={<Dashboard />}/>
         </Routes>
       </BrowserRouter>
     </div>

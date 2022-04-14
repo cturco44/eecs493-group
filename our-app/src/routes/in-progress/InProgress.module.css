@@ -1,5 +1,17 @@
-header {
-  /* background-color: var(--clr-accent); */
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.wrapper {
+  flex: 6;
+}
+
+#headerTitle {
+  margin: 1rem 0;
 }
 
 .back {
@@ -13,7 +25,7 @@ header {
   font-weight: normal;
   font-size: 1rem;
   text-transform: capitalize;
-  /* padding: 1rem; */
+  margin: 2em 0;
 }
 
 .selected::after {
@@ -23,11 +35,12 @@ header {
   background-color: black;
   bottom: -1em;
   left: 0;
+  position: absolute;
 }
 
 #headerTitle {
   font-weight: var(--fw-bold);
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 div.buttonGreen {
@@ -41,18 +54,33 @@ div.buttonGreen {
   font-weight: var(--fw-bold);
 }
 
-p.stopwatchText {
+.buttonGreen:hover {
+  cursor: pointer;
+}
+
+.stop-watch {
+  margin: 20%;
+}
+
+.time-display {
   color: var(--clr-accent);
   font-size: 3rem;
   font-weight: var(--fw-bold);
+  margin: 10%;
 }
 
-.timeDisplay {
-  padding: 4rem;
+.start-pause-button {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 12px;
+  border-color: var(--clr-accent);
 }
 
-.actPopup {
-
+.confirm-buttons button {
+  margin: 1em;
 }
 
 .xButton {
@@ -62,23 +90,24 @@ p.stopwatchText {
 }
 
 .popup-content {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  /* overflow: scroll; */
 }
 
 .popup-content-section {
   margin-bottom: 0.5rem;
 }
 
-h1 {
-  font-size: 1.5rem;
+.popup-header {
+  font-size: 1rem;
   text-transform: capitalize;
+  position: relative;
+  font-weight: bold;
 }
 
-.lineBreak{
-  width: 50%;
-  height: 3px;
-  background-color: grey;
-  opacity: 20%;
-}
+/* .popup {
+  overflow: scroll;
+} */
+

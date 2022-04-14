@@ -1,147 +1,147 @@
 * {
-    font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .header {
-    background-color: #5E9C59;
-    height: 100px;
-    width: 100%;
-    border-width: 3px;
-    top: 0%;
-    left: 0%;
-    position: sticky;
-    line-height: 100px;
+  background-color: #5e9c59;
+  height: 100px;
+  width: 100%;
+  border-width: 3px;
+  top: 0%;
+  left: 0%;
+  position: sticky;
+  line-height: 100px;
 }
 
-.backButton{
-    flex-direction: row;
-    width: 3em;
-    height: 100%;
-    vertical-align: middle;
-    padding-top: 30px;
-    padding-inline: 20px;
-    float: left;
+.backButton {
+  flex-direction: row;
+  width: 3em;
+  height: 100%;
+  vertical-align: middle;
+  padding-top: 30px;
+  padding-inline: 20px;
+  float: left;
 }
-
 
 .reportButton {
-    padding-top: 30px;
-    line-height: 140px;
-    flex-direction: row;
-    width: 3em;
-    height: 100%;
-    vertical-align: middle;
-    padding-inline: 20px;
-    float:right;
+  padding-top: 30px;
+  line-height: 140px;
+  flex-direction: row;
+  width: 3em;
+  height: 100%;
+  vertical-align: middle;
+  padding-inline: 20px;
+  float: right;
 }
 
 .helpButton {
-    padding-top: 30px;
-    line-height: 140px;
-    flex-direction: row;
-    width: 3em;
-    height: 100%;
-    vertical-align: middle;
-    padding-inline: 20px;
-    float:right;
+  padding-top: 30px;
+  line-height: 140px;
+  flex-direction: row;
+  width: 3em;
+  height: 100%;
+  vertical-align: middle;
+  padding-inline: 20px;
+  float: right;
 }
 
-
 .homeButton {
-    padding-top: 30px;
-    line-height: 140px;
-    flex-direction: row;
-    width: 3em;
-    height: 100%;
-    vertical-align: middle;
-    padding-inline: 20px;
-    float: right;
+  padding-top: 30px;
+  line-height: 140px;
+  flex-direction: row;
+  width: 3em;
+  height: 100%;
+  vertical-align: middle;
+  padding-inline: 20px;
+  float: right;
 }
 
 .title {
-    text-align: center;
-    font-size: large;
-    font-weight: 900;
-    padding-top: 20px;
+  text-align: center;
+  font-size: large;
+  font-weight: 900;
+  padding-top: 20px;
 }
-
 
 .titleSubscript {
-    text-align: center;
-    font-size:small;
-    font-weight:lighter;
-    color: darkslategrey
+  text-align: center;
+  font-size: small;
+  font-weight: lighter;
+  color: darkslategrey;
 }
 
-.lineBreak{
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
-    opacity: 20%;
-    padding-bottom: 1px;
-    width: 50%;
-    height: 1px;
-    z-index: 3;
+.lineBreak {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  opacity: 20%;
+  padding-bottom: 1px;
+  width: 50%;
+  height: 1px;
+  z-index: 3;
 }
 
-.InfoContainer{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.InfoContainer {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.starsContainer{
-    width: 100%;
-    display: inline-block;
-    padding-bottom: 20px;
+.starsContainer {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 20px;
 }
 
-.stars{
-    width: 40px;
-    height: 100%;
-    padding-inline: 10px;
-    display: inline-block;
+.stars {
+  width: 40px;
+  height: 100%;
+  padding-inline: 10px;
+  display: inline-block;
 }
 
-.goldStars{
-    width: 40px;
-    height: 100%;
-    padding-inline: 10px;
-    display: none;
+.goldStars {
+  width: 40px;
+  height: 100%;
+  padding-inline: 10px;
+  display: none;
 }
 
-.textContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
+.textContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
-.textBox{
-    width: 100%;
-    height: 60px;
-    border: 2px solid grey;
-    border-radius: 8px;
-    padding: 10px;
-    resize: vertical;
+.textBox {
+  width: 100%;
+  height: 60px;
+  border: 2px solid grey;
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
 }
 
-.buttonContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.beginButton{
-background-color: #5E9C59;
-color: white;
-border: none;
-padding: 15px 32px;
-text-align: center;
-text-decoration: none;
-font-size: large;
-border-radius: 8px;
-box-shadow: 1px 1px 1px black;
+.beginButton {
+  background-color: #5e9c59;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: large;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px black;
 }
 
+.confirm-buttons button {
+  margin: 1em;
+}

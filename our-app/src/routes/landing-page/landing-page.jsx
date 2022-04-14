@@ -15,7 +15,7 @@ const LandingPage = ({ enterName }) => {
   const closePopupError = () => setOpenPopupError(false);
 
   const getNextButton = (name) => {
-    if (isValidName(name) && name !== "") {
+    if (isValidName(name.toLowerCase()) && name !== '') {
       return (
         <Link to="../selection-page/selection-page">
           <input
@@ -25,7 +25,7 @@ const LandingPage = ({ enterName }) => {
             onClick={() => enterName(name)}
           />
         </Link>
-      )
+      );
     } else {
       return (
         <div>
@@ -33,20 +33,29 @@ const LandingPage = ({ enterName }) => {
             type="button"
             className={styles.StartButt}
             value="Start Session"
-            onClick={() => setOpenPopupError(is_openError => !is_openError)}
+            onClick={() => setOpenPopupError((is_openError) => !is_openError)}
           />
-          <Popup open={is_openError} closeOnDocumentClick onClose={closePopupError}>
+          <Popup
+            open={is_openError}
+            closeOnDocumentClick
+            onClose={closePopupError}
+          >
             <div className={styles.popup}>
-              <a className={styles.xButton} onClick={closePopupError}> &times; </a>
+              <a className={styles.xButton} onClick={closePopupError}>
+                {' '}
+                &times;{' '}
+              </a>
               <p className={styles['error-header']}>ERROR</p>
-              <p>"Invalid name: must enter a name with only alphabetic characters."</p>
+              <p>
+                "Invalid name: must enter a name with only alphabetic
+                characters."
+              </p>
             </div>
           </Popup>
         </div>
       );
-
     }
-  }
+  };
 
   return (
     <div>

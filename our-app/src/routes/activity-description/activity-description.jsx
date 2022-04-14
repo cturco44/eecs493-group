@@ -3,11 +3,9 @@ import { getActInfo } from './data';
 import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { ReactComponent as Back } from './../../images/back.svg';
 import { ReactComponent as Home } from './../../images/home-button.svg';
-import { ReactComponent as Help } from './../../images/help-button.svg';
 import { connect } from 'react-redux';
 import styles from './ActivityDescription.module.css';
 import { React, useState } from 'react';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 const ActivityDescription = () => {
@@ -15,9 +13,6 @@ const ActivityDescription = () => {
     let allActs = getActInfo();
     let activityId = parseInt(params.actId, 10)
     let activity = allActs[activityId];
-
-    const [is_open, setOpenPopup] = useState(false);
-    const closePopup = () => setOpenPopup(false);
 
     function NewlineText(props) {
       const text = props.text;
@@ -31,22 +26,20 @@ const ActivityDescription = () => {
     return (
       <div>
         <main>
-            <div className={styles.header}>
-                <div>
-                    <Link to="/activities-list/activities-list"> 
-                        <Back className={styles.backButton} />
-                    </Link>                   
-                    {/*<Link to="/"> 
-                        <Help className={styles.helpButton} />
-                    </Link>*/}
-                    <Link to="/"> 
-                        <Report className={styles.reportButton} />
-                    </Link>
-                    <Link to="/selection-page/selection-page"> 
-                        <Home className={styles.homeButton} />
-                    </Link>
-                </div>
-            </div>
+          <div className={styles.header}>
+              <Link to="/activities-list/activities-list">
+                  <Back className={styles.backButton} />
+              </Link>
+              {/*<Link to="/">
+                  <Help className={styles.helpButton} />
+              </Link>*/}
+              {/* <Link to="/">
+                  <Report className={styles.reportButton} />
+              </Link> */}
+              <Link to="/selection-page/selection-page">
+                  <Home className={styles.homeButton} />
+              </Link>
+          </div>
 
           <div className={styles.activityName}>
             <h1> {activity.name.toUpperCase()} </h1>
@@ -74,7 +67,7 @@ const ActivityDescription = () => {
         </div>
 
         <section className={styles.buttonContainer}>
-          <Link to={`../mindfulness/mindfulness/${activityId}`}> 
+          <Link to={`../mindfulness/mindfulness/${activityId}`}>
             <div className={styles.nextButton}> Next </div>
           </Link>
         </section>

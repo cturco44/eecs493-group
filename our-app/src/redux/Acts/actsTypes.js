@@ -11,8 +11,7 @@ export const PRE_HAPPINESS = 'PRE_HAPPINESS';
 export const POST_HAPPINESS = 'POST_HAPPINESS';
 export const PRE_EXCITEMENT = 'PRE_EXCITEMENT';
 export const POST_EXCITEMENT = 'POST_EXCITEMENT';
-export const TIME_START = 'TIME_START';
-export const TIME_END = 'TIME_END';
+export const TIME_SPENT = 'TIME_SPENT';
 
 
 

@@ -1,21 +1,20 @@
 // import { ReactComponent as Report } from './../../images/icon-report.svg';
 import { React, useState, useEffect } from 'react';
-import ReactStopwatch from 'react-stopwatch';
+// import ReactStopwatch from 'react-stopwatch';
 import { connect } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import {
-  enterTimeStart,
-  enterTimeEnd,
+  enterTimeSpent,
   changeScore,
 } from '../../redux/Acts/actsActions';
 import { getActInfo } from '../activity-description/data';
 import styles from './InProgress.module.css';
-import StopWatch from './StopWatch';
-import Timer from './Timer';
+// import StopWatch from './StopWatch';
+// import Timer from './Timer';
 import ControlButtons from './ControlButtons';
 
-const InProgress = ({ score, timeStart, enterTimeEnd, changeScore }) => {
+const InProgress = ({ score, changeScore, enterTimeSpent }) => {
   let params = useParams();
   let activityID = parseInt(params.actId, 10);
   let activity = getActInfo()[activityID];
@@ -53,21 +52,10 @@ const InProgress = ({ score, timeStart, enterTimeEnd, changeScore }) => {
     setIsPaused(!isPaused);
   };
 
-  const handleReset = () => {
-    setIsActive(false);
-    setTime(0);
-  };
-
-  let getNextButton = () => {
-    <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
-      <div className={styles.popup}>
-        <a className={styles.xButton} onClick={closePopup}>
-          &times;
-        </a>
-        <div></div>
-      </div>
-    </Popup>;
-  };
+  const newlineText = (text) => {
+    const newText = text.split('\n').map(str => <p style={{textAlign: 'left', paddingBottom: '15px', paddingLeft: '20px'}} >{str}</p>);
+    return newText;
+  }
 
   return (
     <div>
@@ -80,77 +68,71 @@ const InProgress = ({ score, timeStart, enterTimeEnd, changeScore }) => {
           <div className={styles.inProgress}>
             <h1 className={styles.selected}>
               <p id={styles.headerTitle}>{activity.name}</p>
-              <p>In Progress</p>
+              In Progress
             </h1>
 
-            <div>
-              <div
-                className={styles.buttonGreen}
-                onClick={() => {
-                  setOpenPopup((is_open) => !is_open);
-                }}
-              >
-                Activity Description
-              </div>
-              <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
-                <div className={styles.popup}>
-                  <a className={styles.xButton} onClick={closePopup}>
-                    {' '}
-                    &times;
-                  </a>
-                  <div>
-                    <section>
-                      <h1> {activity.name} </h1>
-                      <hr className={styles.lineBreak} />
-                    </section>
+            <div
+              className={styles.buttonGreen}
+              onClick={() => {
+                setOpenPopup((is_open) => !is_open);
+              }}
+            >
+              Activity Description
+            </div>
+            <Popup open={is_open} closeOnDocumentClick onClose={closePopup}>
+              <div className={styles.popup}>
+                <a className={styles.xButton} onClick={closePopup}>
+                  &times;
+                </a>
+                <div>
+                  <section>
+                    <h1>{activity.name}</h1>
+                  </section>
 
-                    <section className={styles['popup-content']}>
-                      <div className={styles['popup-content-section']}>
-                        <h1>Description:</h1>
-                        <p> {activity.description} </p>
-                      </div>
+                  <section className={styles['popup-content']}>
+                    <div className={styles['popup-content-section']}>
+                      <h1>Description:</h1>
+                      <p> {newlineText(activity.description)} </p>
+                    </div>
 
-                      <div className={styles['popup-content-section']}>
-                        <h1>Instructions:</h1>
-                        <p> {activity.instruction} </p>
-                      </div>
+                    <div className={styles['popup-content-section']}>
+                      <h1>Instructions:</h1>
+                      <p> {newlineText(activity.instruction)} </p>
+                    </div>
 
-                      <div className={styles['popup-content-section']}>
-                        <h1>Tips:</h1>
-                        <p> {activity.tips} </p>
-                      </div>
-                    </section>
-                  </div>
+                    <div className={styles['popup-content-section']}>
+                      <h1>Tips:</h1>
+                      <p> {newlineText(activity.tips)} </p>
+                    </div>
+                  </section>
                 </div>
-              </Popup>
+              </div>
+            </Popup>
+          </div>
+
+          <div className={styles['stop-watch']}>
+            {/* <Timer time={time} className={styles.timeDisplay}/> */}
+            {/* <div className="timer"> */}
+            <div className={styles['time-display']}>
+              <span className="digits">
+                {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
+              </span>
+              <span className="digits">
+                {('0' + Math.floor((time / 1000) % 60)).slice(-2)}.
+              </span>
+              <span className="digits mili-sec">
+                {('0' + ((time / 10) % 100)).slice(-2)}
+              </span>
+            </div>
+            <div className={styles['start-pause-button']}>
+              <ControlButtons
+                active={isActive}
+                isPaused={isPaused}
+                handleStart={handleStart}
+                handlePauseResume={handlePauseResume}
+              />
             </div>
           </div>
-
-          <div className="stop-watch">
-            <Timer time={time} />
-            <ControlButtons
-              // className={styles.timeDisplay}
-              active={isActive}
-              isPaused={isPaused}
-              handleStart={handleStart}
-            />
-          </div>
-
-          {/* <ReactStopwatch
-              seconds={0} //getSecond(timeStart, time_chkpt)}
-              minutes={0} //getMinute(timeStart, time_chkpt)}
-              hours={0} //getHour(timeStart, time_chkpt)}
-              limit="00:00:20"
-              render={({ formatted, hours, minutes, seconds }) => {
-                return (
-                  <div className={styles.timeDisplay}>
-                    <p>Time Elapsed:</p>
-                    <p className={styles.stopwatchText}>{formatted}</p>
-                  </div>
-                );
-              }}
-            /> */}
-          {/* <p>{formatted}</p> */}
 
           <div
             className={styles.buttonGreen}
@@ -173,7 +155,7 @@ const InProgress = ({ score, timeStart, enterTimeEnd, changeScore }) => {
                   <button
                     onClick={() => {
                       changeScore(score + activity.points);
-                      enterTimeEnd(Date.now());
+                      enterTimeSpent(time);
                     }}
                   >
                     Yes
@@ -192,7 +174,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeScore: (score) => dispatch(changeScore(score)),
     // enterTimeStart: (time) => dispatch(enterTimeStart(time)),
-    enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
+    // enterTimeEnd: (time) => dispatch(enterTimeEnd(time)),
+    enterTimeSpent: (time) => dispatch(enterTimeSpent(time)),
   };
 };
 

@@ -27,13 +27,15 @@ const ActivitiesList = ({ category, time, score }) => {
             <Back className={styles['back-button']} />
           </Link>
           <div className={styles.score}>Score: {score}</div>
-          <Report className={styles['icon-report']} />
+          {/* <Link to={`../dashboard/dashboard/${0}`}>
+            <Report className={styles['icon-report']} />
+          </Link> */}
         </header>
         <section className={styles['act-list-title']}>
           <h1 className={styles.selected}>
             Selected: {time} min, {category}
           </h1>
-          <p>Select an activity or activities to complete:</p>
+          <p>Select an activity to complete:</p>
         </section>
         <section className={styles['act-list']}>
           <div className={styles.labels}>
@@ -48,8 +50,8 @@ const ActivitiesList = ({ category, time, score }) => {
                     HELP
                   </div>
                   <section className={styles['help-question-answer']}>
-                    <div className={styles['help-question']}>What is APP_NAME?</div>
-                    <p>APP_NAME is a program aimed at getting people outside. That’s it.
+                    <div className={styles['help-question']}>What is Take it Outside?</div>
+                    <p>Take it Outside! is a program aimed at getting people outside. That’s it.
                       It gives its users complete flexibility of choice in time and
                       location, then suggests a couple of fun activities to do outside,
                       from taking a walk with a friend to a outdoor photography

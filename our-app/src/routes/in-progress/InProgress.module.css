@@ -90,18 +90,24 @@ div.buttonGreen {
 }
 
 .popup-content {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  /* overflow: scroll; */
 }
 
 .popup-content-section {
   margin-bottom: 0.5rem;
 }
 
-h1 {
-  font-size: 1.25rem;
+.popup-header {
+  font-size: 1rem;
   text-transform: capitalize;
   position: relative;
+  font-weight: bold;
 }
+
+/* .popup {
+  overflow: scroll;
+} */
 

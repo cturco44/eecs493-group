@@ -238,9 +238,9 @@ const Mindfulness = ({
             >
               <Back className={styles.backButton} />
             </Link>
-            <Link to="/">
+           {/*  <Link to="/">
               <Report className={styles.reportButton} />
-            </Link>
+            </Link> */}
 
             <Home
               className={styles.homeButton}

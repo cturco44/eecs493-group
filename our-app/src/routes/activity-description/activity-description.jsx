@@ -33,9 +33,9 @@ const ActivityDescription = () => {
               {/*<Link to="/">
                   <Help className={styles.helpButton} />
               </Link>*/}
-              <Link to="/">
+              {/* <Link to="/">
                   <Report className={styles.reportButton} />
-              </Link>
+              </Link> */}
               <Link to="/selection-page/selection-page">
                   <Home className={styles.homeButton} />
               </Link>

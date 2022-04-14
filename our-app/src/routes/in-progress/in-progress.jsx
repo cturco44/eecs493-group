@@ -66,10 +66,10 @@ const InProgress = ({ score, changeScore, enterTimeSpent }) => {
 
         <div className={styles.wrapper}>
           <div className={styles.inProgress}>
-            <h1 className={styles.selected}>
+            <p className={styles.selected}>
               <p id={styles.headerTitle}>{activity.name}</p>
               In Progress
-            </h1>
+            </p>
 
             <div
               className={styles.buttonGreen}
@@ -84,24 +84,24 @@ const InProgress = ({ score, changeScore, enterTimeSpent }) => {
                 <a className={styles.xButton} onClick={closePopup}>
                   &times;
                 </a>
-                <div>
+                <div className={styles['popup']}>
                   <section>
-                    <h1>{activity.name}</h1>
+                    <p className={styles['popup-header']}>{activity.name}</p>
                   </section>
 
                   <section className={styles['popup-content']}>
                     <div className={styles['popup-content-section']}>
-                      <h1>Description:</h1>
+                      <p className={styles['popup-header']}>Description:</p>
                       <p> {newlineText(activity.description)} </p>
                     </div>
 
                     <div className={styles['popup-content-section']}>
-                      <h1>Instructions:</h1>
+                      <p className={styles['popup-header']}>Instructions:</p>
                       <p> {newlineText(activity.instruction)} </p>
                     </div>
 
                     <div className={styles['popup-content-section']}>
-                      <h1>Tips:</h1>
+                      <p className={styles['popup-header']}>Tips:</p>
                       <p> {newlineText(activity.tips)} </p>
                     </div>
                   </section>
@@ -151,7 +151,7 @@ const InProgress = ({ score, changeScore, enterTimeSpent }) => {
               <p>Are you sure you want to end the activity?</p>
               <div className={styles['confirm-buttons']}>
                 <button onClick={closePopupConfirm}> No </button>
-                <Link to="/reflection/reflection">
+                <Link to={`/reflection/reflection/${activityID}`}>
                   <button
                     onClick={() => {
                       changeScore(score + activity.points);

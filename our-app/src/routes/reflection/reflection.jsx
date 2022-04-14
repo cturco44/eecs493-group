@@ -237,10 +237,9 @@ const Reflection = ({
             {/*<Link to="/"> 
                         <Help className={styles.helpButton} />
                     </Link>*/}
-            <Link to="/">
-              <Report className={styles.reportButton} />
-            </Link>
-
+            {/* <Link to={`/dashboard/dashboard/${activityID}`}> 
+                <Report className={styles.reportButton} />
+            </Link> */}
             <Home
               className={styles.homeButton}
               onClick={() =>
@@ -302,7 +301,7 @@ const Reflection = ({
           ></textarea>
         </div>
 
-        <Link to={'/'}>
+        <Link to={`/dashboard/dashboard/${activityID}`}>
           {' '}
           {/* TODO: change */}
           <div className={styles.buttonContainer}>

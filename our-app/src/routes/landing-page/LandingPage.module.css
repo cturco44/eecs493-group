@@ -5,23 +5,28 @@
 .bg {
 
  /* Full height */
- height: 100%;
- background-image: url("./kate.jpg");
+ height: 100vh;
+ background-image: url('./../../images/kate.jpg');
 
  /* Center and scale the image nicely */
  background-position: center;
  background-repeat: no-repeat;
  background-size: cover;
-
  text-align: center;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+form {
+  margin-top: 5em;
 }
 
 .header {
   font-weight: 700;
   font-size: 100px;
   text-align: center;
-  transform: translate(0, 50%);
-
   color: #FFFFFF;
 }
 
@@ -38,14 +43,21 @@
 }
 
 input[type="text"] {
-  width: 45%;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 3px solid #ccc;
-
   background: rgba(196, 196, 196, 0.7);
   font-size: 30px;
   text-align: center;
+}
+
+.enterName {
+  width: 100%;
+  border: 3px solid red;
+}
+
+input::placeholder {
+  color: black;
 }
 
 input[type=fname]:focus {
@@ -86,3 +98,4 @@ input[type=fname]:focus {
   margin-right: 5%;
   overflow-wrap: normal;
 }
+

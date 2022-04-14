@@ -23,6 +23,16 @@ const Dashboard = ({name, score, category, preActNote, postActNote, preEnergy, p
         "social": social,
         "mental": mental
     };
+
+    let activityId = 0;
+    const numToPage = {
+        1: '/selection-page/selection-page',
+        2: '/activities-list/activities-list',
+        3: `/activity-description/activity-description/${0}`,
+        4: `/mindfulness/mindfulness/${0}`,
+        5: `/reflection/reflection/${0}`
+    }
+    
     return (
         <>
         <Popup open={popupOpen} closeOnDocumentClick onClose={closePopupError}>

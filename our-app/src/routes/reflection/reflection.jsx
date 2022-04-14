@@ -237,7 +237,7 @@ const Reflection = ({
                     {/*<Link to="/"> 
                         <Help className={styles.helpButton} />
                     </Link>*/}
-                    <Link to="/"> 
+                    <Link to={`/dashboard/dashboard/${activityID}`}> 
                         <Report className={styles.reportButton} />
                     </Link>
                     <Link to="/selection-page/selection-page"> 

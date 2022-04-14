@@ -61,6 +61,7 @@ const LandingPage = ({ enterName }) => {
             value={name}
             placeholder="Enter Your Name"
             onChange={(e) => setName(e.target.value)}
+            className={styles.enterName}
           />
         </form>
 

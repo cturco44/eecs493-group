@@ -6,15 +6,13 @@
 .header {
   font-weight: 700;
   font-size: 70px;
-  padding-top: 100px;
-  margin-left: 80px;
 }
 
 .minQ {
   font-weight: 400;
   font-size: 35px;
   font-style: italic;
-  margin: 20px;
+  margin: 1em;
 }
 
 .fmins {
@@ -38,16 +36,25 @@
   line-height: 75px;
 }
 
+.actionButts > .button_w_text > button:hover {
+  opacity: 0.5;
+}
+
+.actionButts > .button_w_text > button:active {
+  background-color: yellow;
+  opacity: 1;
+}
+
 .Social {
-  background-image: url('friends.svg');
+  background-image: url('./../../images/friends.svg');
 }
 
 .Exercise {
-  background-image: url('gym.svg');
+  background-image: url('./../../images/gym.svg');
 }
 
 .Mental {
-  background-image: url('brain.svg');
+  background-image: url('./../../images/brain.svg');
 }
 
 .FindActivitiesButt {
@@ -61,13 +68,29 @@
   margin-top: 30px;
 }
 
-.topBuff {
-  position: fixed;
-  width: 100%;
+.container {
+  background-image: url('./../../images/kate.jpg');
   height: 50px;
-  top: 0;
-  left: 0;
-  background-image: url('kate.jpg');
+  width: 100%;
+
+}
+
+.topBuff {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2em 0 0;
+}
+
+.help-button {
+  width: 4rem;
+  height: 4rem;
+}
+
+.help-button:hover {
+  cursor: pointer;
 }
 
 .bottBuff {
@@ -76,10 +99,12 @@
   height: 50px;
   bottom: 0;
   left: 0;
-  background-image: url('kate.jpg');
+  background-image: url('./../../images/kate.jpg');
+  border: 3px solid red;
+  z-index: 10;
 }
 
-/* .report {
+.report-button {
   background-image: url('report.svg');
   width: 70px;
   height: 70px;
@@ -87,7 +112,7 @@
   float: right;
   margin-top: 70px;
   margin-right: 20px;
-} */
+}
 
 input[type='fmins'] {
   box-sizing: border-box;
@@ -165,4 +190,30 @@ div.button_w_text {
   margin-left: 5%;
   margin-right: 5%;
   overflow-wrap: normal;
+}
+
+div.buttonGreen {
+  background-color: var(--clr-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15em;
+  height: 2.5em;
+  color: black;
+  font-weight: var(--fw-bold);
+  margin: 0 auto;
+  text-transform: capitalize;
+}
+
+.buttonGreen:hover {
+  cursor: pointer;
+}
+
+.formEntry {
+  margin-top: 10px;
+}
+
+.gb {
+  display: flex;
+  justify-content: center;
 }

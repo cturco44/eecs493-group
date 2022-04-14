@@ -27,20 +27,31 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
 
   const returnNextButton = (time, cat) => {
     if (time === '' || isNaN(time)) {
-      return <div>
-        <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button>
+      return <div className={styles["activities-btn"]}>
+        {/* <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button> */}
+        <div className={styles.buttonGreen} onClick={() => setOpenPopupError(is_openError => !is_openError)}>
+          find activities
+        </div>
         {returnErrorPopup("Invalid time: must enter a time that is a number before continuing.")}
       </div>
     } else if (cat !== 'social' && cat !== 'exercise' && cat !== 'mental') {
-      return <div>
-        <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button>
+      return <div className={styles["activities-btn"]}>
+        <div className={styles.buttonGreen} onClick={() => setOpenPopupError(is_openError => !is_openError)}>
+          find activities
+        </div>
+        {/* <button onClick={() => setOpenPopupError(is_openError => !is_openError)}>find activities</button> */}
         {returnErrorPopup("Invalid category: must select one of the three categories before continuing.")}
       </div>
     }
     return (
-      <Link to="../activities-list/activities-list">
-          <button onClick={() => selectTime(time)}>find activities</button>
-      </Link>
+      <div className="d-flex justify-content-center">
+        <Link to="../activities-list/activities-list">
+          <div className={styles.buttonGreen} onClick={() => selectTime(time)}>
+            find activities
+          </div>
+            {/* <button className={styles.button} onClick={() => selectTime(time)}>find activities</button> */}
+        </Link>
+      </div>
     );
   }
 
@@ -57,10 +68,10 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.topBuff}>
         <Link to="../dashboard/dashboard"> {/** TODO: Reroute to report page */}
-          <Report className={styles['report-button']}/>
+          <Report className={[styles['report-button'], 'mt-5'].join(' ')}/>
         </Link>
 
         <Help className={styles['help-button']}
@@ -100,10 +111,11 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
         <p> First, how many minutes do you want to be outside for? </p>
       </div>
 
-      <form>
+      <form className={styles.formEntry}>
         {/* TODO: add to state */}
         <input
           type="text"
+          
           value={time}
           placeholder="enter your time"
           onChange={(e) => setTime(e.target.value)}
@@ -116,29 +128,26 @@ const SelectionPage = ({ selectCategory, selectTime, name }) => {
 
       <div className={styles.actionButts}>
         <div className={styles.button_w_text}>
-          <button onClick={() => {
+          <button className={styles.Social} onClick={() => {
               setCat('social');
               selectCategory('social');
-              }}>
-              Social</button>
+              }}></button>
           <span className={styles.Caption}>Social</span>
         </div>
 
         <div className={styles.button_w_text}>
-        <button onClick={() => {
+        <button className={styles.Exercise} onClick={() => {
               setCat('exercise');
               selectCategory('exercise');
-              }}>
-              Exercise</button>
+              }}></button>
           <span className={styles.Caption}>Exercise</span>
         </div>
 
         <div className={styles.button_w_text}>
-        <button onClick={() => {
+        <button className={styles.Mental} onClick={() => {
               setCat('mental');
               selectCategory('mental');
-              }}>
-              Mental</button>
+              }}></button>
           <span className={styles.Caption}>Mental</span>
         </div>
       </div>

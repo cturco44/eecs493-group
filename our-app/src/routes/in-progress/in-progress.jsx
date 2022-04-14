@@ -85,7 +85,7 @@ const InProgress = ({ score, enterTimeEnd, enterTimeStart, changeScore }) => {
       />
       </div>
 
-      <Link to="/reflection/reflection">
+      <Link to={`/reflection/reflection/${activityID}`}>
         <div className={styles.buttonGreen}
             onClick={() => {
               changeScore(score + activity.points);
